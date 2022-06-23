@@ -1,0 +1,35 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IOneInch",
+  "sourceName": "contracts/interface/IOneInch.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract ERC20",
+          "name": "srcToken",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "useSrcWrappers",
+          "type": "bool"
+        }
+      ],
+      "name": "getRateToEth",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "weightedRate",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

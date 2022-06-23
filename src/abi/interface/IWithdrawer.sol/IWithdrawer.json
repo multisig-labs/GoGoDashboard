@@ -1,0 +1,18 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IWithdrawer",
+  "sourceName": "contracts/interface/IWithdrawer.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "receiveWithdrawalAVAX",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

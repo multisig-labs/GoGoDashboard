@@ -1,0 +1,96 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-image:url("./gogopool-logo-text.svg");
+  background-repeat:no-repeat;
+  background-position: center;
+  height:150px;
+}
+
+.header-bg {
+  background-image:url("./background.svg");
+  background-repeat: repeat;
+}
+
+.App-body {
+  background-image:url("./background.svg");
+  background-repeat: repeat;
+}
+
+.Body-content {
+  position:relative;
+  padding-top:50px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.cloud {
+  position:fixed;
+  animation-name:float;
+  animation-duration:5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes float {
+  from {
+    padding-left:50vw;
+  }
+  to {
+    padding-left:80vw;
+  }
+}
+
+
+.mountains {
+  position:fixed;
+  width:1500px;
+  height:auto;
+  bottom:-100px;
+}
+
+.balloon-yellow {
+  position:fixed;
+  animation-name:balloon;
+  animation-duration:2s;
+  animation-iteration-count: infinite;
+}
+@keyframes balloon {
+  from {
+    padding-left:0vw;
+  }
+  to {
+    padding-left:120vw;
+  }
+}
+
+.table {
+  width:40vw;
+  margin: auto;
+}
+
+.cards {
+  display:flex;
+  flex-direction: row;
+  text-align:left;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  padding-top:50px;
+  padding-left:25px;
+}

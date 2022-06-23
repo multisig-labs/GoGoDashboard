@@ -1,6 +1,6 @@
 # GoGoDashboard
 Front-end display for all GoGoPool smart contract variables/information
-![alt text](https://github.com/CarterBloop/GoGoDashboard/blob/main/about_img/img1.png)
+![Screenshot](Screenshot.png)
 ### How-to for local hardhat chain:
 1) Local Node is running and smart contracts deployed
 2) Copy the contract addresses into contractAddresses.json

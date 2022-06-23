@@ -12,7 +12,7 @@ import contractAddresses from "../data/contractAddresses.json";
 // ABI
 import oracleABI from "../abi/contract/Oracle.sol/Oracle.json";
 // GGP logo
-import ggplogo from "../gogoDocs.svg";
+import ggplogo from "../assets/gogoDocs.svg";
 
 function useOracleStats(func) {
     const OracleInterface = new utils.Interface(
@@ -38,7 +38,7 @@ function Oracle() {
   const GGPPrice = useOracleStats("getGGPPrice");
 
   return (
-    <Card sx={{ maxWidth: 200 }} style={{textAlign: 'center', margin: '10px'}}>
+    <Card sx={{ maxWidth: 200, boxShadow: 10  }} style={{textAlign: 'center', margin: '10px'}}>
       <CardContent>
         <Typography variant="h5" component="div">GGP <img width="20px" height="20px" src={ggplogo}/> Price:</Typography>
         {GGPPrice && <Typography variant="h6" component="div"><b>$</b> {formatEther(GGPPrice)}</Typography>}

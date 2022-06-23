@@ -14,19 +14,19 @@
 }
 
 .App-header {
-  background-image:url("./gogopool-logo-text.svg");
+  background-image:url("./assets/gogopool-logo-text.svg");
   background-repeat:no-repeat;
   background-position: center;
   height:150px;
 }
 
 .header-bg {
-  background-image:url("./background.svg");
+  background-image:url("./assets/background.svg");
   background-repeat: repeat;
 }
 
 .App-body {
-  background-image:url("./background.svg");
+  background-image:url("./assets/background.svg");
   background-repeat: repeat;
 }
 
@@ -42,7 +42,7 @@
 .cloud {
   position:fixed;
   animation-name:float;
-  animation-duration:5s;
+  animation-duration:20s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
@@ -67,15 +67,18 @@
 .balloon-yellow {
   position:fixed;
   animation-name:balloon;
-  animation-duration:2s;
+  animation-duration:30s;
   animation-iteration-count: infinite;
 }
+
 @keyframes balloon {
   from {
     padding-left:0vw;
+    transform: translate(0,300px);
   }
   to {
     padding-left:120vw;
+    transform: translate(0,0px);
   }
 }
 
@@ -93,4 +96,6 @@
   justify-content: center;
   padding-top:50px;
   padding-left:25px;
+  padding-bottom:100px;
+  shape-outside: margin-box;
 }

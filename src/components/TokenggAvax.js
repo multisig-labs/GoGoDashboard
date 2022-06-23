@@ -36,10 +36,6 @@ function useGGAVAXStats(func) {
   return value?.[0];
 }
 
-function createData(stat, value) {
-  return [stat, value];
-}
-
 function TokenggAvax() {
   const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength");
   const lastSync = useGGAVAXStats("lastSync");
@@ -50,7 +46,7 @@ function TokenggAvax() {
 
   return (
     <div>
-      <TableContainer component={Paper}>
+      <TableContainer sx={{ boxShadow:10}}component={Paper}>
         <Table sx={{ minWidth: 50 }} aria-label="simple table">
           <TableHead>
             <TableRow>

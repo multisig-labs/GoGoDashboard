@@ -4,16 +4,16 @@ import Oracle from "./components/Oracle"
 import TokenggAvax from "./components/TokenggAvax";
 import MinipoolManager from './components/MinipoolManager';
 
-import cloud from './cloud.svg'
-import mountains from './mountains.svg'
-import balloonyellow from './balloon-yellow.svg'
+import cloud from './assets/cloud.svg'
+import mountains from './assets/mountains.svg'
+import balloonyellow from './assets/balloon-yellow.svg'
 
 function App() {
   return (
     <div className="header-bg">
       <div className="App-header"></div>
       <div className="App-body">
-        <img src={cloud} className="cloud" width="200px"></img>
+        <img src={cloud} className="cloud" width="300px"></img>
         <img src={mountains} className="mountains"></img>
         <img src={balloonyellow} className="balloon-yellow"></img>
         <div className="Body-content">

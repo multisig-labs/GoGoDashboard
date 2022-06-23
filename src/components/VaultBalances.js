@@ -8,9 +8,9 @@ import Typography from '@mui/material/Typography';
 // Contract Address
 import contractAddresses from "../data/contractAddresses.json";
 // AVAX logo
-import avaxlogo from "../avax-logo.png";
+import avaxlogo from "../assets/avax-logo.png";
 // GGP logo
-import ggplogo from "../gogoDocs.svg";
+import ggplogo from "../assets/gogoDocs.svg";
 
 
 function VaultBalances() {
@@ -22,7 +22,7 @@ function VaultBalances() {
   );
 
   return (
-    <Card sx={{ maxWidth: 200 }} style={{textAlign: 'center', margin: '10px'}}>
+    <Card sx={{ maxWidth: 200, boxShadow: 10}} style={{textAlign: 'center', margin: '10px'}}>
       <CardContent>
         <Typography variant="h5" component="div">Vault:</Typography>
         {vaultAVAX && <Typography variant="h6" component="div">{formatEther(vaultAVAX)} <img width="20px" height="20px" src={avaxlogo}/></Typography>}

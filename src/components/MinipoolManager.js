@@ -35,7 +35,7 @@ function MinipoolManager() {
   const minipoolCount = useMinipoolStats("getMinipoolCount");
 
   return (
-    <Card sx={{ maxWidth: 200 }} style={{textAlign: 'center', margin: '10px'}}>
+    <Card sx={{ maxWidth: 200, boxShadow: 10}} style={{textAlign: 'center', margin: '10px'}}>
     <CardContent>
       <Typography variant="h5" component="div"><b>#</b> of minipools:</Typography>
       {minipoolCount && <Typography variant="h6" component="div">{minipoolCount.toNumber()}</Typography>}

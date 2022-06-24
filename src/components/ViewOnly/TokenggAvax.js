@@ -12,9 +12,9 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 // Contract Address
-import contractAddresses from "../data/contractAddresses.json";
+import contractAddresses from "../../data/contractAddresses.json";
 // ABI
-import TokenggAvaxABI from "../abi/contract/tokens/TokenggAVAX.sol/TokenggAVAX.json";
+import TokenggAvaxABI from "../../abi/contract/tokens/TokenggAVAX.sol/TokenggAVAX.json";
 
 function useGGAVAXStats(func) {
   const TokenggAvaxInterface = new utils.Interface(TokenggAvaxABI.abi);
@@ -64,7 +64,7 @@ function TokenggAvax() {
                 Rewards Cycle Length
               </TableCell>
               {rewardsCycleLength && (
-                <TableCell align="right">{rewardsCycleLength}</TableCell>
+                <TableCell align="right">{rewardsCycleLength/86400} Days</TableCell>
               )}
             </TableRow>
             <TableRow>

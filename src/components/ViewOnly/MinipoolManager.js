@@ -7,9 +7,9 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 // Contract Address
-import contractAddresses from "../data/contractAddresses.json"
+import contractAddresses from "../../data/contractAddresses.json"
 // ABI
-import MinipoolManagerABI from "../abi/contract/MinipoolManager.sol/MinipoolManager.json"
+import MinipoolManagerABI from "../../abi/contract/MinipoolManager.sol/MinipoolManager.json"
 
 function useMinipoolStats(func) {
     const MinipoolManagerInterface = new utils.Interface(

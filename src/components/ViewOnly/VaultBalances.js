@@ -6,11 +6,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 // Contract Address
-import contractAddresses from "../data/contractAddresses.json";
+import contractAddresses from "../../data/contractAddresses.json";
 // AVAX logo
-import avaxlogo from "../assets/avax-logo.png";
+import avaxlogo from "../../assets/avax-logo.png";
 // GGP logo
-import ggplogo from "../assets/gogoDocs.svg";
+import ggplogo from "../../assets/gogoDocs.svg";
 
 
 function VaultBalances() {

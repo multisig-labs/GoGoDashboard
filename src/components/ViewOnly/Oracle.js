@@ -8,11 +8,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 // Contract Address
-import contractAddresses from "../data/contractAddresses.json";
+import contractAddresses from "../../data/contractAddresses.json";
 // ABI
-import oracleABI from "../abi/contract/Oracle.sol/Oracle.json";
+import oracleABI from "../../abi/contract/Oracle.sol/Oracle.json";
 // GGP logo
-import ggplogo from "../assets/gogoDocs.svg";
+import ggplogo from "../../assets/gogoDocs.svg";
 
 function useOracleStats(func) {
     const OracleInterface = new utils.Interface(

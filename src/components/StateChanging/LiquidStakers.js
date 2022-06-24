@@ -54,12 +54,17 @@ function LiquidStakers() {
 
   return (
       <>
-    <Card
-      sx={{ maxWidth: 200, boxShadow: 10 }}
-      style={{ textAlign: "right", margin: "10px" }}
+    <Card className="card"
+      sx={{ boxShadow: 10 }}
+      style={{
+        width: '300px',
+        height: "300px",
+        marginTop: 20,
+        border: "solid",
+      }}
     >
       <CardContent>
-        <Typography style={{ textAlign: "left"}} variant="h5" component="div">
+        <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Alice:
         </Typography>
         {actorAVAX_0 && (
@@ -85,12 +90,17 @@ function LiquidStakers() {
         <Button style={{ textAlign:"center"}} variant="outlined">Unstake</Button>
       </CardContent>
     </Card>
-    <Card
-      sx={{ maxWidth: 200, boxShadow: 10 }}
-      style={{ textAlign: "right", margin: "10px" }}
+    <Card className="card"
+      sx={{ boxShadow: 10 }}
+      style={{
+        width: '300px',
+        height: "300px",
+        marginTop: 20,
+        border: "solid",
+      }}
     >
       <CardContent>
-        <Typography style={{ textAlign: "left"}} variant="h5" component="div">
+        <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Bob:
         </Typography>
         {actorAVAX_1 && (
@@ -114,12 +124,17 @@ function LiquidStakers() {
         )}
       </CardContent>
     </Card>
-    <Card
-      sx={{ maxWidth: 200, boxShadow: 10 }}
-      style={{ textAlign: "right", margin: "10px" }}
+    <Card className="card"
+      sx={{ boxShadow: 10 }}
+      style={{
+        width: '300px',
+        height: "300px",
+        marginTop: 20,
+        border: "solid",
+      }}
     >
       <CardContent>
-        <Typography style={{ textAlign: "left"}} variant="h5" component="div">
+        <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Cam:
         </Typography>
         {actorAVAX_2 && (

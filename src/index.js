@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css';
 import Layout from './pages/Layout';
-import Report from './pages/Report';
+import Dashboard from './pages/Dashboard';
 import Test from './pages/Test';
 import reportWebVitals from "./reportWebVitals";
 
@@ -23,7 +23,7 @@ root.render(
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Report />} />
+          <Route index element={<Dashboard />} />
           <Route path="test" element={<Test />} />
         </Route>
       </Routes>

@@ -1,6 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
 import Button from "@mui/material/Button/Button";
-import { Typography } from "@mui/material/Typography/Typography";
 
 const Layout = () => {
   return (
@@ -8,7 +7,7 @@ const Layout = () => {
       <nav>
         <Button variant="contained" color="error"
         style={{
-            margin: "2%",
+            margin: "1%",
             border: "solid",
             color: "black"
         }}
@@ -18,11 +17,11 @@ const Layout = () => {
                 textDecoration: 'none',
                 color: "inherit"
             }}
-            >Report</Link>
+            >Dashboard</Link>
         </Button>
         <Button variant="contained" color="error"
         style={{
-            margin: "2%",
+            margin: "1%",
             border: "solid",
             color: "black"
         }}

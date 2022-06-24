@@ -8,7 +8,7 @@ import cloud from '../assets/cloud.svg'
 import mountains from '../assets/mountains.svg'
 import balloonyellow from '../assets/balloon-yellow.svg'
 
-function Report() {
+function Dashboard() {
   return (
     <div className="header-bg">
       <div className="App-header"></div>
@@ -31,4 +31,4 @@ function Report() {
   );
 }
 
-export default Report;
+export default Dashboard;

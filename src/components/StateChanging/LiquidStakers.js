@@ -71,7 +71,7 @@ function LiquidStakers() {
         {actorggAVAX_0 && (
           <Typography variant="h6" component="div">
             {Math.round(formatEther(actorggAVAX_0))}{" "}
-            <img style={{transform:"translate(10px,0px)"}} width="20px" height="20px" src={gogoballoon} alt="gg"/>
+            <img width="20px" height="20px" src={gogoballoon} alt="gg"/>
             <img width="20px" height="20px" src={avaxlogo} alt="AVAX"/>
           </Typography>
         )}
@@ -81,7 +81,8 @@ function LiquidStakers() {
             <img width="20px" height="20px" src={ggplogo} alt="GGP" />
           </Typography>
         )}
-        <Button variant="outlined">Stake</Button>
+        <Button style={{ textAlign:"center"}} variant="outlined">Stake</Button>
+        <Button style={{ textAlign:"center"}} variant="outlined">Unstake</Button>
       </CardContent>
     </Card>
     <Card
@@ -101,7 +102,7 @@ function LiquidStakers() {
         {actorggAVAX_1 && (
           <Typography variant="h6" component="div">
             {Math.round(formatEther(actorggAVAX_1))}{" "}
-            <img style={{transform:"translate(10px,0px)"}} width="20px" height="20px" src={gogoballoon} alt="gg"/>
+            <img width="20px" height="20px" src={gogoballoon} alt="gg"/>
             <img width="20px" height="20px" src={avaxlogo} alt="ggAVAX"/>
           </Typography>
         )}
@@ -130,7 +131,7 @@ function LiquidStakers() {
         {actorggAVAX_2 && (
           <Typography variant="h6" component="div">
             {Math.round(formatEther(actorggAVAX_2))}{" "}
-            <img style={{transform:"translate(10px,0px)"}} width="20px" height="20px" src={gogoballoon} alt="gg"/>
+            <img width="20px" height="20px" src={gogoballoon} alt="gg"/>
             <img width="20px" height="20px" src={avaxlogo} alt="ggAVAX"/>
           </Typography>
         )}

@@ -5,34 +5,30 @@ const Layout = () => {
   return (
     <>
       <nav>
-        <Button variant="contained" color="error"
+        <Link to="/"
+        style={{ 
+            textDecoration: 'none',
+            color: "inherit"
+        }}
+        ><Button variant="contained" color="error"
         style={{
             margin: "1%",
             border: "solid",
             color: "black"
         }}
-        >
-            <Link to="/"
+        >Dashboard</Button></Link>
+        <Link to="/test"
             style={{ 
                 textDecoration: 'none',
                 color: "inherit"
             }}
-            >Dashboard</Link>
-        </Button>
-        <Button variant="contained" color="error"
+        ><Button variant="contained" color="error"
         style={{
             margin: "1%",
             border: "solid",
             color: "black"
         }}
-        >
-            <Link to="/test"
-                style={{ 
-                    textDecoration: 'none',
-                    color: "inherit"
-                }}
-            >Test</Link>
-        </Button>
+        >Test</Button></Link>
       </nav>
 
       <Outlet />

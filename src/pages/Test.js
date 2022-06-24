@@ -1,6 +1,5 @@
 import '../styles/Background.css';
-import '../styles/Test.css';
-
+import '../styles/Test.css'
 import LiquidStakers from '../components/StateChanging/LiquidStakers.js';
 
 import cloud from '../assets/cloud.svg'
@@ -16,8 +15,8 @@ function Test() {
         <img src={mountains} className="mountains"></img>
         <img src={balloonyellow} className="balloon-yellow"></img>
         <div className="Body-content">
-          <div className="sections">
-          <div className="cards">
+          <div className="s">
+          <div className="c">
             <LiquidStakers/>
           </div>
           </div>

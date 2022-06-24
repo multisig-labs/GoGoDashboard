@@ -1,4 +1,4 @@
-.sections {
+.s {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -7,11 +7,15 @@
     margin-right: 5%;
 }
 
-.cards {
+.c {
     display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: space-around;
+    flex-direction: row;
+    text-align: right;
+    justify-content: space-between;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.card {
+    margin: 3%;
 }

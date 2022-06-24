@@ -4,8 +4,9 @@ import { formatEther } from "@ethersproject/units";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import CardActions from '@mui/material/CardActions';
 
-import { Button } from '@mui/material';
+import Stake from "./Stake";
 
 
 // Contract Address
@@ -55,7 +56,7 @@ function LiquidStakers() {
   return (
       <>
     <Card
-      sx={{ maxWidth: 200, boxShadow: 10 }}
+      sx={{ boxShadow: 10 }}
       style={{ textAlign: "right", margin: "10px" }}
     >
       <CardContent>
@@ -63,27 +64,28 @@ function LiquidStakers() {
           Alice:
         </Typography>
         {actorAVAX_0 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_0))}{" "}
             <img width="20px" height="20px" src={avaxlogo} alt="AVAX"/>
           </Typography>
         )}
         {actorggAVAX_0 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorggAVAX_0))}{" "}
             <img width="20px" height="20px" src={gogoballoon} alt="gg"/>
             <img width="20px" height="20px" src={avaxlogo} alt="AVAX"/>
           </Typography>
         )}
         {actorGGP_0 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorGGP_0))}{" "}
             <img width="20px" height="20px" src={ggplogo} alt="GGP" />
           </Typography>
         )}
-        <Button style={{ textAlign:"center"}} variant="outlined">Stake</Button>
-        <Button style={{ textAlign:"center"}} variant="outlined">Unstake</Button>
       </CardContent>
+      <CardActions>
+      <Stake value="ACCOUNT_0"/>
+      </CardActions>
     </Card>
     <Card
       sx={{ maxWidth: 200, boxShadow: 10 }}
@@ -94,25 +96,28 @@ function LiquidStakers() {
           Bob:
         </Typography>
         {actorAVAX_1 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_1))}{" "}
             <img width="20px" height="20px" src={avaxlogo} alt="AVAX"/>
           </Typography>
         )}
         {actorggAVAX_1 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorggAVAX_1))}{" "}
             <img width="20px" height="20px" src={gogoballoon} alt="gg"/>
             <img width="20px" height="20px" src={avaxlogo} alt="ggAVAX"/>
           </Typography>
         )}
         {actorGGP_1 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorGGP_1))}{" "}
             <img width="20px" height="20px" src={ggplogo} alt="GGP" />
           </Typography>
         )}
       </CardContent>
+      <CardActions>
+      <Stake value="ACCOUNT_1"/>
+      </CardActions>
     </Card>
     <Card
       sx={{ maxWidth: 200, boxShadow: 10 }}
@@ -123,25 +128,28 @@ function LiquidStakers() {
           Cam:
         </Typography>
         {actorAVAX_2 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_2))}{" "}
             <img width="20px" height="20px" src={avaxlogo} alt="AVAX"/>
           </Typography>
         )}
         {actorggAVAX_2 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorggAVAX_2))}{" "}
             <img width="20px" height="20px" src={gogoballoon} alt="gg"/>
             <img width="20px" height="20px" src={avaxlogo} alt="ggAVAX"/>
           </Typography>
         )}
         {actorGGP_2 && (
-          <Typography variant="h6" component="div">
+          <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorGGP_2))}{" "}
             <img width="20px" height="20px" src={ggplogo} alt="GGP" />
           </Typography>
         )}
       </CardContent>
+      <CardActions>
+      <Stake value="ACCOUNT_2"/>
+      </CardActions>
     </Card>
     </>
   );

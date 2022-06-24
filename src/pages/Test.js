@@ -1,4 +1,6 @@
-import '../App.css';
+import '../styles/Background.css';
+import '../styles/Test.css';
+
 import LiquidStakers from '../components/StateChanging/LiquidStakers.js';
 
 import cloud from '../assets/cloud.svg'

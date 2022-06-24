@@ -1,8 +1,5 @@
 import '../App.css';
-import VaultBalances from '../components/ViewOnly/VaultBalances';
-import Oracle from "../components/ViewOnly/Oracle"
-import TokenggAvax from "../components/ViewOnly/TokenggAvax";
-import MinipoolManager from '../components/ViewOnly/MinipoolManager';
+import LiquidStakers from '../components/StateChanging/LiquidStakers.js';
 
 import cloud from '../assets/cloud.svg'
 import mountains from '../assets/mountains.svg'
@@ -19,7 +16,7 @@ function Test() {
         <div className="Body-content">
           <div className="sections">
           <div className="cards">
-            
+            <LiquidStakers/>
           </div>
           </div>
         </div>

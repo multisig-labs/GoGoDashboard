@@ -1,4 +1,4 @@
-import '../App.css';
+
 import VaultBalances from '../components/ViewOnly/VaultBalances';
 import Oracle from "../components/ViewOnly/Oracle"
 import TokenggAvax from "../components/ViewOnly/TokenggAvax";
@@ -7,6 +7,9 @@ import MinipoolManager from '../components/ViewOnly/MinipoolManager';
 import cloud from '../assets/cloud.svg'
 import mountains from '../assets/mountains.svg'
 import balloonyellow from '../assets/balloon-yellow.svg'
+
+import '../styles/Background.css';
+import '../styles/Dashboard.css';
 
 function Dashboard() {
   return (

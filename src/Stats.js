@@ -1,14 +1,14 @@
 import './App.css';
-import VaultBalances from './components/VaultBalances';
-import Oracle from "./components/Oracle"
-import TokenggAvax from "./components/TokenggAvax";
-import MinipoolManager from './components/MinipoolManager';
+import VaultBalances from './components/ViewOnly/VaultBalances';
+import Oracle from "./components/ViewOnly/Oracle"
+import TokenggAvax from "./components/ViewOnly/TokenggAvax";
+import MinipoolManager from './components/ViewOnly/MinipoolManager';
 
 import cloud from './assets/cloud.svg'
 import mountains from './assets/mountains.svg'
 import balloonyellow from './assets/balloon-yellow.svg'
 
-function App() {
+function Stats() {
   return (
     <div className="header-bg">
       <div className="App-header"></div>
@@ -17,13 +17,13 @@ function App() {
         <img src={mountains} className="mountains"></img>
         <img src={balloonyellow} className="balloon-yellow"></img>
         <div className="Body-content">
-          <div className="table">
+          <div className="sections">
             <TokenggAvax/>
-          </div>
           <div className="cards">
           <VaultBalances className="card-1" />
           <Oracle className="card-2"/>
           <MinipoolManager className="card-3"/>
+          </div>
           </div>
         </div>
       </div>
@@ -31,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default Stats;

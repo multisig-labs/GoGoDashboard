@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #48BEFF;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -23,6 +27,7 @@
 .header-bg {
   background-image:url("./assets/background.svg");
   background-repeat: repeat;
+  background-color: #61dafb;
 }
 
 .App-body {
@@ -32,16 +37,16 @@
 
 .Body-content {
   position:relative;
-  padding-top:50px;
 }
 
 .App-link {
   color: #61dafb;
+  background-color: #61dafb;
 }
 
 .cloud {
   position:fixed;
-  animation-name:float;
+  animation-name: float;
   animation-duration:20s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -82,20 +87,22 @@
   }
 }
 
-.table {
-  width:40vw;
-  margin: auto;
+.sections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 1%;
+  margin-bottom: 5%;
 }
 
 .cards {
-  display:flex;
-  flex-direction: row;
-  text-align:left;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-  padding-top:50px;
-  padding-left:25px;
-  padding-bottom:100px;
-  shape-outside: margin-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  margin-left: 5%;
+  margin-right: 5%;
 }

@@ -7,9 +7,9 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 // Contract Address
-import contractAddresses from "../data/contractAddresses.json"
+import contractAddresses from "../../data/contractAddresses.json"
 // ABI
-import MinipoolManagerABI from "../abi/contract/MinipoolManager.sol/MinipoolManager.json"
+import MinipoolManagerABI from "../../abi/contract/MinipoolManager.sol/MinipoolManager.json"
 
 function useMinipoolStats(func) {
     const MinipoolManagerInterface = new utils.Interface(
@@ -35,7 +35,12 @@ function MinipoolManager() {
   const minipoolCount = useMinipoolStats("getMinipoolCount");
 
   return (
-    <Card sx={{ maxWidth: 200, boxShadow: 10}} style={{textAlign: 'center', margin: '10px'}}>
+    <Card style={{
+      width: '200px',
+      height: "125px",
+      marginTop: 20,
+      border: "solid",
+    }}>
     <CardContent>
       <Typography variant="h5" component="div"><b>#</b> of minipools:</Typography>
       {minipoolCount && <Typography variant="h6" component="div">{minipoolCount.toNumber()}</Typography>}

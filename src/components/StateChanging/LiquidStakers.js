@@ -69,7 +69,7 @@ function LiquidStakers() {
       <CardContent>
         <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Alice:
-        </Typography>
+        </Typography><br/>
         {actorAVAX_0 && (
           <Typography variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_0))}{" "}
@@ -107,7 +107,7 @@ function LiquidStakers() {
       <CardContent>
         <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Bob:
-        </Typography>
+        </Typography><br/>
         {actorAVAX_1 && (
           <Typography style={{}} variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_1))}{" "}
@@ -145,7 +145,7 @@ function LiquidStakers() {
       <CardContent>
         <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Cam:
-        </Typography>
+        </Typography><br/>
         {actorAVAX_2 && (
           <Typography style={{}} variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_2))}{" "}

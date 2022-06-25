@@ -72,6 +72,7 @@ function TokenggAvax() {
   return (
     <>
         <TableContainer component={Paper}
+        sx={{ boxShadow: 10 }}
           style={{
             alignContent: "center",
             maxWidth: "50%",
@@ -84,7 +85,7 @@ function TokenggAvax() {
             <TableRow>
                 <TableCell>
                   <Typography variant="h5" component="div">
-                    TokenggAvax
+                    ggAVAX 
                   </Typography>
                 </TableCell>
                 <TableCell align="right">

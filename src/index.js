@@ -7,7 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Test from './pages/Test';
 import reportWebVitals from "./reportWebVitals";
 
-import { DAppProvider} from '@usedapp/core'
+import { Localhost,DAppProvider} from '@usedapp/core'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

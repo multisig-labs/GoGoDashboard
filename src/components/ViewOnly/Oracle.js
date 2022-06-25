@@ -38,7 +38,8 @@ function Oracle() {
   const GGPPrice = useOracleStats("getGGPPrice");
 
   return (
-    <Card style={{
+    <Card sx={{ boxShadow: 10 }}
+    style={{
       width: '200px',
       height: "125px",
       marginTop: 20,

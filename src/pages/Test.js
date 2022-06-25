@@ -1,10 +1,12 @@
-import '../styles/Background.css';
-import '../styles/Test.css'
-import LiquidStakers from '../components/StateChanging/LiquidStakers.js';
+import "../styles/Background.css";
+import "../styles/Test.css";
+import LiquidStakers from "../components/StateChanging/LiquidStakers.js";
+import Rialto from "../components/StateChanging/Rialto.js";
 
-import cloud from '../assets/cloud.svg'
-import mountains from '../assets/mountains.svg'
-import balloonyellow from '../assets/balloon-yellow.svg'
+import cloud from "../assets/cloud.svg";
+import mountains from "../assets/mountains.svg";
+import balloonyellow from "../assets/balloon-yellow.svg";
+import NodeOperators from "../components/StateChanging/NodeOperators";
 
 function Test() {
   return (
@@ -16,9 +18,15 @@ function Test() {
         <img src={balloonyellow} className="balloon-yellow"></img>
         <div className="Body-content">
           <div className="s">
-          <div className="c">
-            <LiquidStakers/>
-          </div>
+            <div className="c">
+              <LiquidStakers />
+            </div>
+            <div className="c">
+              <NodeOperators />
+            </div>
+            <div className="c">
+              <Rialto />
+            </div>
           </div>
         </div>
       </div>

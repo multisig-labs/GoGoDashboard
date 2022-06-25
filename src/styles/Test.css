@@ -10,12 +10,8 @@
 .c {
     display: flex;
     flex-direction: row;
-    text-align: right;
+    text-align: center;
     justify-content: space-between;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.card {
-    margin: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
 }

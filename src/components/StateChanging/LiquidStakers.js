@@ -59,7 +59,7 @@ function LiquidStakers() {
       sx={{ boxShadow: 10 }}
       style={{
         width: '300px',
-        height: "300px",
+        height: "275px",
         marginTop: 20,
         border: "solid",
       }}
@@ -67,7 +67,7 @@ function LiquidStakers() {
       <CardContent>
         <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Alice:
-        </Typography>
+        </Typography><br/>
         {actorAVAX_0 && (
           <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_0))}{" "}
@@ -89,14 +89,14 @@ function LiquidStakers() {
         )}
       </CardContent>
       <CardActions>
-      <Stake value="ACCOUNT_0"/>
+        <Stake value="ACCOUNT_0"/>
       </CardActions>
     </Card>
     <Card className="card"
       sx={{ boxShadow: 10 }}
       style={{
         width: '300px',
-        height: "300px",
+        height: "275px",
         marginTop: 20,
         border: "solid",
       }}
@@ -104,7 +104,7 @@ function LiquidStakers() {
       <CardContent>
         <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Bob:
-        </Typography>
+        </Typography><br/>
         {actorAVAX_1 && (
           <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_1))}{" "}
@@ -126,14 +126,14 @@ function LiquidStakers() {
         )}
       </CardContent>
       <CardActions>
-      <Stake value="ACCOUNT_1"/>
+        <Stake value="ACCOUNT_1"/>
       </CardActions>
     </Card>
     <Card className="card"
       sx={{ boxShadow: 10 }}
       style={{
         width: '300px',
-        height: "300px",
+        height: "275px",
         marginTop: 20,
         border: "solid",
       }}
@@ -141,7 +141,7 @@ function LiquidStakers() {
       <CardContent>
         <Typography style={{ textAlign: "center"}} variant="h5" component="div">
           Cam:
-        </Typography>
+        </Typography><br/>
         {actorAVAX_2 && (
           <Typography style={{marginRight:"20%"}} variant="h6" component="div">
             {Math.round(formatEther(actorAVAX_2))}{" "}

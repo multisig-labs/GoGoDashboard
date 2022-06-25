@@ -12,7 +12,6 @@ body {
 .header-bg {
     background-image: url("../assets/background.svg");
     background-repeat: repeat;
-    background-color: #61dafb;
 }
 
 .App-body {

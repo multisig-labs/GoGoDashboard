@@ -1,6 +1,6 @@
 # GoGoDashboard
 ### A React display for all GoGoPool smart contract variables/information
-<img src="https://github.com/CarterBloop/GoGoDashboard/blob/cody-branch/Screenshot.png" height="500px"> </img>
+<img src="https://github.com/CarterBloop/GoGoDashboard/blob/cody-branch/Screenshot.png" height="400px"> </img>
 # Demo
 ### 1) You can stake/unstake with demo actors:
 <img src="https://github.com/CarterBloop/GoGoDashboard/blob/cody-branch/demo1.png" height="300px"> </img>

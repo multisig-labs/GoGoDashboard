@@ -23,8 +23,7 @@ function SetGGPPrice() {
     const { status } = state
 
     const setGGP = () => {
-      // Args are in send(), (price,timestamp)
-      void send(ethers.utils.parseEther("3331"),9999)
+      void send(ethers.utils.parseEther(price),9999)
     }
 
     return (

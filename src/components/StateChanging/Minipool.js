@@ -18,15 +18,15 @@ import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
 
 function Minipool(props) {
-  const [amt,setAmt] = useState("")
+  const [avaxamt, setAvaxAmt] = useState("");
+  const [ggpamt, setGgpAmt] = useState("");
+  const [dur, setDur] = useState("");
   let w = new ethers.Wallet(
     privateKeys[props.value],
     ethers.getDefaultProvider("http://localhost:8545")
   );
   let node = nodeID(props.value);
-  let duration = 1209600; //14 Days
   let delegationFee = 0;
-  let ggpBondAmt = utils.parseEther("200");
   const minipoolInterface = new utils.Interface(MinipoolManagerABI.abi);
   const minipoolContract = new Contract(
     contractAddresses["MinipoolManager"],
@@ -48,11 +48,11 @@ function Minipool(props) {
   const makePool = () => {
     void create(
       node,
-      duration,
+      parseInt(dur * 86400),
       delegationFee,
-      ggpBondAmt,
+      utils.parseEther(ggpamt),
       {
-        value: utils.parseEther(amt.toString()),
+        value: utils.parseEther(avaxamt.toString()),
         gasPrice: 18000000,
         gasLimit: 3000000,
       }
@@ -67,14 +67,33 @@ function Minipool(props) {
       <FormGroup>
         <TextField
           id="outlined-basic"
-          label="AVAX amt"
+          label="AVAX Amt"
           variant="outlined"
-          style={{marginLeft:"10px",marginRight:"10px"}}
-          value={amt}
-          onChange={(e) => setAmt(e.target.value)}
+          style={{ marginLeft: "10px", marginRight: "10px" }}
+          value={avaxamt}
+          onChange={(e) => setAvaxAmt(e.target.value)}
         />
-        <ButtonGroup style={{}} variant="outlined" >
+        <TextField
+          id="outlined-basic"
+          label="GGP Bond"
+          variant="outlined"
+          style={{ marginLeft: "10px", marginRight: "10px" }}
+          value={ggpamt}
+          onChange={(e) => setGgpAmt(e.target.value)}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Duration (Days)"
+          variant="outlined"
+          style={{ marginLeft: "10px", marginRight: "10px" }}
+          value={dur}
+          onChange={(e) => setDur(e.target.value)}
+        />
+        <ButtonGroup style={{marginLeft: "10px", marginRight: "10px",justifyContent:"center"}} variant="outlined">
           <Button onClick={() => makePool()}>Create Minipool</Button>
+        </ButtonGroup>
+
+        <ButtonGroup style={{marginLeft: "10px", marginRight: "10px", justifyContent:"center"}} variant="outlined">
           <Button onClick={() => withdrawPool()}>Withdraw Funds</Button>
         </ButtonGroup>
       </FormGroup>

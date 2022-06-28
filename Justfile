@@ -15,6 +15,6 @@ install:
 setup:
 	rm -rf ./src/abi/*
 	cp -R ../gogopool-contracts/artifacts/contracts/contract ./src/abi/
-	cp ../gogopool-contracts/cache/deployed_addrs_localhost.js ./src/data/
 	rm ./src/data/contractAddresses.json
-	cut -c 18- ./src/data/deployed_addrs_localhost.js > ./src/data/contractAddresses.json
+	cut -c 18- ./src/data/deployed_addrs.js > ./src/data/contractAddresses.json
+	npm start

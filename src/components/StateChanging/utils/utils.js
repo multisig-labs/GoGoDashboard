@@ -42,7 +42,7 @@ export function randomBytes(seed, lower, upper) {
 }
 
 export async function now() {
-  const p = ethers.getDefaultProvider("http://localhost:8545");
+  const p = ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL);
   const latest = await p.getBlockNumber();
   const b = await p.getBlock(latest);
   return ethers.BigNumber.from(b.timestamp);
@@ -69,7 +69,7 @@ function useMinipoolManager(func,arg) {
 
 export async function calcDuration(name) {
   // The Contract object
-  const minipoolManager = new ethers.Contract(contractAddresses["MinipoolManager"],minipoolABI.abi, ethers.getDefaultProvider("http://localhost:8545"));
+  const minipoolManager = new ethers.Contract(contractAddresses["MinipoolManager"],minipoolABI.abi, ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL));
   const i = await minipoolManager.getIndexOf(nodeID(name));
   const mp = await minipoolManager.getMinipool(i);
   const end = mp.startTime.add(mp.duration);
@@ -77,15 +77,12 @@ export async function calcDuration(name) {
 }
 
 export async function calcReward(name,reward) {
-  const minipoolManager = new ethers.Contract(contractAddresses["MinipoolManager"],minipoolABI.abi, ethers.getDefaultProvider("http://localhost:8545"));
+  const minipoolManager = new ethers.Contract(contractAddresses["MinipoolManager"],minipoolABI.abi, ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL));
   const i = await minipoolManager.getIndexOf(nodeID(name));
   const mp = await minipoolManager.getMinipool(i);
   const avax = mp.avaxNodeOpAmt.add(mp.avaxUserAmt);
 
   reward = ethers.utils.parseEther(reward.toString());
   const total = avax.add(reward);
-  console.log("Total:");
-  console.log(ethers.utils.formatEther(total));
-  console.log("-----");
   return(total);
 }

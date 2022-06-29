@@ -17,7 +17,7 @@ import FormGroup from '@mui/material/FormGroup';
 
 
 function SyncRewards(props) {
-  let w = new ethers.Wallet(privateKeys[props.value],ethers.getDefaultProvider("http://localhost:8545"));
+  let w = new ethers.Wallet(privateKeys[props.value],ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL));
 
   const ggAVAXInterface = new utils.Interface(TokenggAVAXABI.abi);
   const ggAVAXContract = new Contract(contractAddresses["TokenggAVAX"], ggAVAXInterface);

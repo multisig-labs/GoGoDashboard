@@ -26,7 +26,7 @@ function Stake(props) {
 
   let w = new ethers.Wallet(
     privateKeys[props.value],
-    ethers.getDefaultProvider("http://localhost:8545")
+    ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL, {})
   );
 
   const { state: stakeState, send: stake } = useContractFunction(
@@ -40,7 +40,8 @@ function Stake(props) {
   } = useContractFunction(ggAvaxContract, "redeemAVAX", { signer: w });
 
   const stakeAVAX = () => {
-    void stake({ value: ethers.utils.parseEther(amt.toString()) });
+    void stake({ value: ethers.utils.parseEther(amt, "ether"), gasPrice: 18000000,
+    gasLimit: 3000000});
   };
   const redeemggAVAX = () => {
     void unstake(ethers.utils.parseEther(amt.toString(),"ethers"),{});

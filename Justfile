@@ -12,9 +12,10 @@ install:
 	yarn install
 
 # Setup
+# Copies over abi and contract addresses
 setup:
 	rm -rf ./src/abi/*
 	cp -R ../gogopool-contracts/artifacts/contracts/contract ./src/abi/
 	rm ./src/data/contractAddresses.json
-	cut -c 18- ./src/data/deployed_addrs.js > ./src/data/contractAddresses.json
+	cut -c 18- ../gogopool-contracts/cache/deployed_addrs.js > ./src/data/contractAddresses.json
 	npm start

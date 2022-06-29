@@ -26,7 +26,7 @@ function Skip() {
 
   function handleClick() {
     console.log("Hey");
-    const p = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+    const p = new ethers.providers.JsonRpcProvider(process.env.REACT_APP_ETH_RPC_URL);
     p.send("evm_increaseTime",[86400 * dur]);
     p.send("evm_mine",[]);
     }

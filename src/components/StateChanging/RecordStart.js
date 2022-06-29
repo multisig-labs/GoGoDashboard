@@ -17,7 +17,7 @@ import FormGroup from '@mui/material/FormGroup';
 
 
 function RecordStart(props) {
-    let w = new ethers.Wallet(privateKeys[props.value],ethers.getDefaultProvider("http://localhost:8545"));
+    let w = new ethers.Wallet(privateKeys[props.value],ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL));
     const minipoolInterface = new utils.Interface(MinipoolManagerABI.abi);
     const minipoolContract = new Contract(contractAddresses["MinipoolManager"], minipoolInterface);
 

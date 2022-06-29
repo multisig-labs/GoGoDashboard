@@ -23,7 +23,7 @@ function Minipool(props) {
   const [dur, setDur] = useState("");
   let w = new ethers.Wallet(
     privateKeys[props.value],
-    ethers.getDefaultProvider("http://localhost:8545")
+    ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
   );
   let node = nodeID(props.value);
   let delegationFee = 0;

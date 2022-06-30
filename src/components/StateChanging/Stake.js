@@ -26,7 +26,7 @@ function Stake(props) {
 
   let w = new ethers.Wallet(
     privateKeys[props.value],
-    ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL, {})
+    ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
   );
 
   const { state: stakeState, send: stake } = useContractFunction(

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./pages/Layout";
@@ -6,6 +7,9 @@ import Test from "./pages/Test";
 
 import { DAppProvider } from "@usedapp/core";
 import { ethers } from "ethers";
+
+import { getAddrs } from "./components/StateChanging/utils/getContractAddresses";
+
 
 const config = {
   readOnlyChainId: 31337,
@@ -16,6 +20,10 @@ const config = {
 
 function App() {
 const provider = ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL, {});
+useEffect(() => {
+    //Runs only on the first render
+    getAddrs();
+  }, []);
   return (
     <DAppProvider config={config}>
       <BrowserRouter>

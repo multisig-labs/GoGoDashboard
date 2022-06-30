@@ -17,5 +17,5 @@ setup:
 	rm -rf ./src/abi/*
 	cp -R ../gogopool-contracts/artifacts/contracts/contract ./src/abi/
 	rm ./src/data/contractAddresses.json
-	cut -c 18- ../gogopool-contracts/cache/deployed_addrs.js > ./src/data/contractAddresses.json
-	npm start
+	cp ../gogopool-contracts/cache/deployed_addrs_custom.json ./src/data
+	mv ./src/data/deployed_addrs_custom.json ./src/data/contractAddresses.json

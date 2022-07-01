@@ -40,8 +40,7 @@ function Stake(props) {
   } = useContractFunction(ggAvaxContract, "redeemAVAX", { signer: w });
 
   const stakeAVAX = () => {
-    void stake({ value: ethers.utils.parseEther(amt, "ether"), gasPrice: 18000000,
-    gasLimit: 3000000});
+    void stake({ value: ethers.utils.parseEther(amt, "ether")});
   };
   const redeemggAVAX = () => {
     void unstake(ethers.utils.parseEther(amt.toString(),"ethers"),{});

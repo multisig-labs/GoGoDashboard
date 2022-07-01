@@ -53,8 +53,6 @@ function Minipool(props) {
       utils.parseEther(ggpamt),
       {
         value: utils.parseEther(avaxamt.toString()),
-        gasPrice: 18000000,
-        gasLimit: 3000000,
       }
     );
   };

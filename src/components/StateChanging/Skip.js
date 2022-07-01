@@ -16,8 +16,8 @@ import CardActions from "@mui/material/CardActions";
 
 async function logTime() {
     // getting timestamp
-    const blockNumBefore = await ethers.getDefaultProvider('http://127.0.0.1:8545').getBlockNumber();
-    const blockBefore = await ethers.getDefaultProvider('http://127.0.0.1:8545').getBlock(blockNumBefore);
+    const blockNumBefore = await ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL).getBlockNumber();
+    const blockBefore = await ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL).getBlock(blockNumBefore);
     console.log(blockBefore.timestamp);
 }
 

@@ -21,6 +21,10 @@ import gogoballoon from "../../assets/gogopool-balloon.svg";
 // GGP logo
 import ggplogo from "../../assets/gogoDocs.svg";
 
+function createData( name, avax, ggavax, ggp) {
+  return { name, avax, ggavax, ggp };
+}
+
 function NodeOperators() {
   // Actor 0 Balances
   const actorAVAX_0 = useEtherBalance(accounts["NODEOP1"]);
@@ -43,9 +47,14 @@ function NodeOperators() {
     accounts["NODEOP2"]
   );
 
+  const nodeopcards = [
+    createData("NODEOP1",actorAVAX_0,actorggAVAX_0,actorGGP_0),
+    createData("NODEOP2",actorAVAX_1,actorggAVAX_1,actorGGP_1),
+  ]
+
   return (
     <>
-      <Card
+      {nodeopcards.map((row) => (<Card
         className="card"
         sx={{ boxShadow: 10 }}
         style={{
@@ -62,75 +71,32 @@ function NodeOperators() {
             variant="h5"
             component="div"
           >
-            NodeOp1:
+            {row.name}:
           </Typography>
-          {actorAVAX_0 && (
+          {row.avax && (
             <Typography variant="h6" component="div">
-              {Math.round(formatEther(actorAVAX_0))}{" "}
+              {Math.round(formatEther(row.avax))}{" "}
               <img width="20px" height="20px" src={avaxlogo} alt="AVAX" />
             </Typography>
           )}
-          {actorggAVAX_0 && (
+          {row.ggavax && (
             <Typography style={{}} variant="h6" component="div">
-              {Math.round(formatEther(actorggAVAX_0))}{" "}
+              {Math.round(formatEther(row.ggavax))}{" "}
               <img width="20px" height="20px" src={gogoballoon} alt="gg" />
               <img width="20px" height="20px" src={avaxlogo} alt="AVAX" />
             </Typography>
           )}
-          {actorGGP_0 && (
+          {row.ggp && (
             <Typography style={{}} variant="h6" component="div">
-              {Math.round(formatEther(actorGGP_0))}{" "}
+              {Math.round(formatEther(row.ggp))}{" "}
               <img width="20px" height="20px" src={ggplogo} alt="GGP" />
             </Typography>
           )}
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
-          <Minipool value="NODEOP1" />
+          <Minipool value={row.name} />
         </CardActions>
-      </Card>
-      <Card
-        className="card"
-        sx={{ boxShadow: 10 }}
-        style={{
-          width: "300px",
-          height: "fit-content",
-          border: "solid",
-          justifyContent: "center",
-          margin: "5%",
-        }}
-      >
-        <CardContent>
-          <Typography
-            style={{ textAlign: "center" }}
-            variant="h5"
-            component="div"
-          >
-            NodeOp2:
-          </Typography>
-          {actorAVAX_1 && (
-            <Typography style={{}} variant="h6" component="div">
-              {Math.round(formatEther(actorAVAX_1))}{" "}
-              <img width="20px" height="20px" src={avaxlogo} alt="AVAX" />
-            </Typography>
-          )}
-          {actorggAVAX_1 && (
-            <Typography style={{}} variant="h6" component="div">
-              {Math.round(formatEther(actorggAVAX_1))}{" "}
-              <img width="20px" height="20px" src={gogoballoon} alt="gg" />
-              <img width="20px" height="20px" src={avaxlogo} alt="ggAVAX" />
-            </Typography>
-          )}
-          {actorGGP_1 && (
-            <Typography style={{}} variant="h6" component="div">
-              {Math.round(formatEther(actorGGP_1))}{" "}
-              <img width="20px" height="20px" src={ggplogo} alt="GGP" />
-            </Typography>
-          )}
-        </CardContent>
-        <CardActions style={{ justifyContent: "center" }}>
-          <Minipool value="NODEOP2" />
-        </CardActions>
-      </Card>
+      </Card>))}
     </>
   );
 }

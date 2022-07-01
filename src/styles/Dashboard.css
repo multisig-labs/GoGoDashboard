@@ -15,3 +15,9 @@
     margin-left: 5%;
     margin-right: 5%;
 }
+
+.Rpc-url {
+    text-align: center;
+    color:azure;
+    text-shadow: 1px 1px black;
+}

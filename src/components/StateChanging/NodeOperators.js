@@ -1,18 +1,13 @@
-import { useEtherBalance, useTokenBalance } from "@usedapp/core";
-import { formatEther } from "@ethersproject/units";
-
 import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 
 import Minipool from "./Minipool";
+import { useBalances, createData } from "./utils/utils";
 
-// Contract Address
-import contractAddresses from "../../data/contractAddresses.json";
-// Actor Addresses
-import accounts from "../../data/accounts.json";
+import { formatEther } from "@ethersproject/units";
+
 
 // AVAX logo
 import avaxlogo from "../../assets/avax-logo.png";
@@ -21,35 +16,14 @@ import gogoballoon from "../../assets/gogopool-balloon.svg";
 // GGP logo
 import ggplogo from "../../assets/gogoDocs.svg";
 
-function createData( name, avax, ggavax, ggp) {
-  return { name, avax, ggavax, ggp };
-}
-
 function NodeOperators() {
-  // Actor 0 Balances
-  const actorAVAX_0 = useEtherBalance(accounts["NODEOP1"]);
-  const actorggAVAX_0 = useTokenBalance(
-    contractAddresses["TokenggAVAX"],
-    accounts["NODEOP1"]
-  );
-  const actorGGP_0 = useTokenBalance(
-    contractAddresses["TokenGGP"],
-    accounts["NODEOP1"]
-  );
-  // Actor 1 Balances
-  const actorAVAX_1 = useEtherBalance(accounts["NODEOP2"]);
-  const actorggAVAX_1 = useTokenBalance(
-    contractAddresses["TokenggAVAX"],
-    accounts["NODEOP2"]
-  );
-  const actorGGP_1 = useTokenBalance(
-    contractAddresses["TokenGGP"],
-    accounts["NODEOP2"]
-  );
+  // Actor Balances
+  const nodeOp1 = useBalances("nodeOp1")
+  const nodeOp2 = useBalances("nodeOp2")
 
   const nodeopcards = [
-    createData("NODEOP1",actorAVAX_0,actorggAVAX_0,actorGGP_0),
-    createData("NODEOP2",actorAVAX_1,actorggAVAX_1,actorGGP_1),
+    createData("NODEOP1",nodeOp1.AVAX,nodeOp1.ggAVAX,nodeOp1.GGP),
+    createData("NODEOP2",nodeOp2.AVAX,nodeOp2.ggAVAX,nodeOp2.GGP)
   ]
 
   return (

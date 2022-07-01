@@ -1,11 +1,12 @@
 import { ethers } from "ethers";
-import { useCall} from "@usedapp/core";
-import { Contract } from "@ethersproject/contracts";
+import { useEtherBalance, useTokenBalance } from "@usedapp/core";
 
-// ABI
+// Minipool ABI
 import minipoolABI from "../../../abi/contract/MinipoolManager.sol/MinipoolManager.json";
 // Contract Address
 import contractAddresses from "../../../data/contractAddresses.json";
+// Account Addresses
+import accounts from "../../../data/anrAccounts.json";
 
 // Random addresses to use for nodeIDs
 export const nodeID = (seed) => {
@@ -48,41 +49,52 @@ export async function now() {
   return ethers.BigNumber.from(b.timestamp);
 }
 
-function useMinipoolManager(func,arg) {
-  const MinipoolInterface = new ethers.utils.Interface(
-    minipoolABI.abi
-  );
-  const { value, error } =
-    useCall(
-      func && {
-          contract: new Contract(contractAddresses["MinipoolManager"], MinipoolInterface), // instance of called contract
-          method: func, // Method to be called
-          args: [arg], // Method arguments - address to be checked for balance
-        }
-    ) ?? {};
-  if(error) {
-    console.error(error.message)
-    return undefined
-  }
-  return value?.[0]
-}
-
+// Calculate Minipool Duration
 export async function calcDuration(name) {
-  // The Contract object
-  const minipoolManager = new ethers.Contract(contractAddresses["MinipoolManager"],minipoolABI.abi, ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL));
+  const minipoolManager = new ethers.Contract(
+    contractAddresses["MinipoolManager"],
+    minipoolABI.abi,
+    ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
+  );
   const i = await minipoolManager.getIndexOf(nodeID(name));
   const mp = await minipoolManager.getMinipool(i);
   const end = mp.startTime.add(mp.duration);
-  return(end);
+  return end;
 }
 
-export async function calcReward(name,reward) {
-  const minipoolManager = new ethers.Contract(contractAddresses["MinipoolManager"],minipoolABI.abi, ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL));
+// Calculate Minipool Reward
+export async function calcReward(name, reward) {
+  const minipoolManager = new ethers.Contract(
+    contractAddresses["MinipoolManager"],
+    minipoolABI.abi,
+    ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
+  );
   const i = await minipoolManager.getIndexOf(nodeID(name));
   const mp = await minipoolManager.getMinipool(i);
   const avax = mp.avaxNodeOpAmt.add(mp.avaxUserAmt);
-
   reward = ethers.utils.parseEther(reward.toString());
   const total = avax.add(reward);
-  return(total);
+  return total;
+}
+
+// Get Actor Balances (AVAX,ggAVAX,GGP)
+export const useBalances = (name) => {
+  const actorAVAX = useEtherBalance(accounts[name].addr);
+  const actorggAVAX = useTokenBalance(
+    contractAddresses["TokenggAVAX"],
+    accounts[name].addr
+  );
+  const actorGGP = useTokenBalance(
+    contractAddresses["TokenGGP"],
+    accounts[name].addr
+  );
+  return {
+    AVAX: actorAVAX,
+    ggAVAX: actorggAVAX,
+    GGP: actorGGP,
+  };
+}
+
+export function createData( name, avax, ggavax, ggp) {
+  return { name, avax, ggavax, ggp };
 }

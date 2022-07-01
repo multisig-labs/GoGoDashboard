@@ -41,6 +41,13 @@ function createData( stat, value ) {
   return { stat, value };
 }
 
+function unixTimeConversion(unixTimestamp) {
+  const milliseconds = unixTimestamp * 1000
+  const dateObject = new Date(milliseconds)
+  const humanDateFormat = dateObject.toLocaleString()
+  return(humanDateFormat)
+}
+
 function TokenggAvax() {
   const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength") /86400;
   const lastSync = useGGAVAXStats("lastSync");
@@ -54,9 +61,9 @@ function TokenggAvax() {
   const totalAssets = useGGAVAXStats("totalAssets");
 
   const rows1 = [
-    createData('Rewards Cycle Length', rewardsCycleLength),
+    createData('Rewards Cycle Length', rewardsCycleLength + " days"),
     createData('Last Sync', lastSync),
-    createData('Reward Cycle End', rewardsCycleEnd)
+    createData('Reward Cycle End', unixTimeConversion(rewardsCycleEnd))
   ];
 
   const rows2 = [
@@ -67,7 +74,7 @@ function TokenggAvax() {
     createData('Total Float', totalFloat),
     createData('Amount Avail for Stake', amountAvailableForStaking),
     createData('Total Assets', totalAssets)
-  ]
+  ];
 
   return (
     <>

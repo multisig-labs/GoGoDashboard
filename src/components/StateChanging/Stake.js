@@ -6,7 +6,7 @@ import { formatEther } from "@ethersproject/units";
 
 // Contract Address
 import contractAddresses from "../../data/contractAddresses.json";
-import privateKeys from "../../data/pk.json";
+import accounts from "../../data/anrAccounts.json";
 // ABI
 import ggAvaxABI from "../../abi/contract/tokens/TokenggAVAX.sol/TokenggAVAX.json";
 
@@ -23,9 +23,8 @@ function Stake(props) {
     contractAddresses["TokenggAVAX"],
     ggAvaxInterface
   );
-
   let w = new ethers.Wallet(
-    privateKeys[props.value],
+    accounts[props.name].pk,
     ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
   );
 

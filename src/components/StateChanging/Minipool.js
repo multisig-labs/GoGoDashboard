@@ -8,7 +8,7 @@ import contractAddresses from "../../data/contractAddresses.json";
 // ABI
 import MinipoolManagerABI from "../../abi/contract/MinipoolManager.sol/MinipoolManager.json";
 // Private Keys
-import privateKeys from "../../data/pk.json";
+import accounts from "../../data/anrAccounts.json";
 
 import { nodeID } from "./utils/utils.js";
 
@@ -22,10 +22,10 @@ function Minipool(props) {
   const [ggpamt, setGgpAmt] = useState("");
   const [dur, setDur] = useState("");
   let w = new ethers.Wallet(
-    privateKeys[props.value],
+    accounts[props.name].pk,
     ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
   );
-  let node = nodeID(props.value);
+  let node = nodeID(props.name);
   let delegationFee = 0;
   const minipoolInterface = new utils.Interface(MinipoolManagerABI.abi);
   const minipoolContract = new Contract(

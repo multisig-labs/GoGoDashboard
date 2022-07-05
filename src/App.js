@@ -1,37 +1,41 @@
-import './App.css';
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Layout from "./pages/Layout";
+import Dashboard from "./pages/Dashboard";
+import Test from "./pages/Test";
 
-import VaultBalances from './components/ViewOnly/VaultBalances';
-import Oracle from "./components/ViewOnly/Oracle"
-import TokenggAvax from "./components/ViewOnly/TokenggAvax";
-import MinipoolManager from './components/ViewOnly/MinipoolManager';
+import { DAppProvider, DEFAULT_SUPPORTED_CHAINS } from "@usedapp/core";
+import { ethers } from "ethers";
 
-import LiquidStakers from './components/StateChanging/LiquidStakers';
+import { getAddrs } from "./components/StateChanging/utils/getContractAddresses";
+import { AnrChain } from "./Anr";
 
-import cloud from './assets/cloud.svg'
-import mountains from './assets/mountains.svg'
-import balloonyellow from './assets/balloon-yellow.svg'
+const config = {
+  readOnlyChainId: AnrChain.chainId,
+  readOnlyUrls: {
+    [AnrChain.chainId]: AnrChain.rpcUrl,
+  },
+  networks: [...DEFAULT_SUPPORTED_CHAINS, AnrChain],
+};
 
 function App() {
+const provider = ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL, {});
+// useEffect(() => {
+//     //Runs only on the first render
+//     getAddrs();
+//   }, []);
   return (
-    <div className="header-bg">
-      <div className="App-header"></div>
-      <div className="App-body">
-        <img src={cloud} alt="Cloud" className="cloud" width="300px"></img>
-        <img src={mountains} alt="Mountains" className="mountains"></img>
-        <img src={balloonyellow} alt="Balloon" className="balloon-yellow"></img>
-        <div className="Body-content">
-          <div className="table">
-            <TokenggAvax/>
-          </div>
-          <div className="cards">
-          <VaultBalances className="card-1" />
-          <Oracle className="card-2"/>
-          <MinipoolManager className="card-3"/>
-          <LiquidStakers/>
-          </div>
-        </div>
-      </div>
-    </div>
+    <DAppProvider config={config}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="test" element={<Test />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </DAppProvider>
   );
 }
 

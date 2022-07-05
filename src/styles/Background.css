@@ -1,0 +1,75 @@
+body {
+    background-color: #48BEFF;
+}
+
+.App-header {
+    background-image: url("../assets/gogopool-logo-text.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 150px;
+    text-align:center;
+}
+
+.header-bg {
+    background-image: url("../assets/background.svg");
+    background-repeat: repeat;
+}
+
+.App-body {
+    background-image: url("../assets/background.svg");
+    background-repeat: repeat;
+}
+
+.Body-content {
+    position: relative;
+}
+
+.App-link {
+    color: #61dafb;
+    background-color: #61dafb;
+}
+
+.cloud {
+    position: fixed;
+    animation-name: float;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes float {
+    from {
+        padding-left: 50vw;
+    }
+
+    to {
+        padding-left: 80vw;
+    }
+}
+
+
+.mountains {
+    position: fixed;
+    width: 1500px;
+    height: auto;
+    bottom: -100px;
+}
+
+.balloon-yellow {
+    position: fixed;
+    animation-name: balloon;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes balloon {
+    from {
+        padding-left: 0vw;
+        transform: translate(0, 300px);
+    }
+
+    to {
+        padding-left: 120vw;
+        transform: translate(0, 0px);
+    }
+}

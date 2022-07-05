@@ -10,6 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { Typography } from "@material-ui/core";
 
 // Contract Address
 import contractAddresses from "../../data/contractAddresses.json";
@@ -36,8 +37,19 @@ function useGGAVAXStats(func) {
   return value?.[0];
 }
 
+function createData( stat, value ) {
+  return { stat, value };
+}
+
+function unixTimeConversion(unixTimestamp) {
+  const milliseconds = unixTimestamp * 1000
+  const dateObject = new Date(milliseconds)
+  const humanDateFormat = dateObject.toLocaleString()
+  return(humanDateFormat)
+}
+
 function TokenggAvax() {
-  const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength");
+  const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength") /86400;
   const lastSync = useGGAVAXStats("lastSync");
   const rewardsCycleEnd = useGGAVAXStats("rewardsCycleEnd");
   const lastRewardAmount = useGGAVAXStats("lastRewardAmount");
@@ -48,109 +60,77 @@ function TokenggAvax() {
   const amountAvailableForStaking = useGGAVAXStats("amountAvailableForStaking");
   const totalAssets = useGGAVAXStats("totalAssets");
 
+  const rows1 = [
+    createData('Rewards Cycle Length', rewardsCycleLength + " days"),
+    createData('Last Sync', lastSync),
+    createData('Reward Cycle End', unixTimeConversion(rewardsCycleEnd))
+  ];
+
+  const rows2 = [
+    createData('Last Reward Amt', lastRewardAmount),
+    createData('Total Released Assets', totalReleasedAssets),
+    createData('Staking Total Assets', stakingTotalAssets),
+    createData('Target Float %', targetFloatPercent),
+    createData('Total Float', totalFloat),
+    createData('Amount Avail for Stake', amountAvailableForStaking),
+    createData('Total Assets', totalAssets)
+  ];
+
   return (
-    <div>
-      <TableContainer sx={{ boxShadow: 10 }} component={Paper}>
-        <Table sx={{ minWidth: 50 }} aria-label="simple table">
-          <TableHead>
+    <>
+        <TableContainer component={Paper}
+        sx={{ boxShadow: 10 }}
+          style={{
+            alignContent: "center",
+            maxWidth: "50%",
+            margin: 'auto',
+            border: "solid"
+          }}
+        >
+        <Table aria-label="simple table" size="small">
+            <TableHead>
             <TableRow>
-              <TableCell><b>ggAVAX Variables:</b></TableCell>
-              <TableCell align="right"><b>Values:</b></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Rewards Cycle Length
-              </TableCell>
-              {rewardsCycleLength && (
-                <TableCell align="right">{rewardsCycleLength/86400} Days</TableCell>
-              )}
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Last Sync
-              </TableCell>
-              <TableCell align="right"> {lastSync}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Rewards Cycle End
-              </TableCell>
-              {rewardsCycleEnd && (
-                <TableCell align="right">{rewardsCycleEnd}</TableCell>
-              )}
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Last Reward Amount
-              </TableCell>
-              {lastRewardAmount && (
-                <TableCell align="right">
-                  {formatEther(lastRewardAmount)}
+                <TableCell>
+                  <Typography variant="h5" component="div">
+                    ggAVAX 
+                  </Typography>
                 </TableCell>
-              )}
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Total Released Assets
-              </TableCell>
-              {totalReleasedAssets && (
                 <TableCell align="right">
-                  {formatEther(totalReleasedAssets)}
+                  <Typography variant="h5" component="div">
+                    Value
+                  </Typography>
                 </TableCell>
-              )}
             </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Staking Total Assets
-              </TableCell>
-              {stakingTotalAssets && (
+            </TableHead>
+            <TableBody>
+            {rows1.map((row) => (
+                <TableRow
+                key={row.stat}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                <TableCell component="th" scope="row">
+                    {row.stat}
+                </TableCell>
                 <TableCell align="right">
-                  {formatEther(stakingTotalAssets)}
+                  {row.value}
                 </TableCell>
-              )}
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Target Float Percent
-              </TableCell>
-              {targetFloatPercent && (
-                <TableCell align="right">
-                  {formatUnits(targetFloatPercent)}
+                </TableRow>
+            ))}
+            {rows2.map((row) => (
+                <TableRow
+                key={row.stat}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                <TableCell component="th" scope="row">
+                    {row.stat}
                 </TableCell>
-              )}
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Total Float
-              </TableCell>
-              {totalFloat && (
-                <TableCell align="right">{formatUnits(totalFloat)}</TableCell>
-              )}
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Amount Available For Staking
-              </TableCell>
-              {amountAvailableForStaking && (
-                <TableCell align="right">
-                  {formatUnits(amountAvailableForStaking)}
-                </TableCell>
-              )}
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Total Assets
-              </TableCell>
-              {totalAssets && (
-                <TableCell align="right">{formatUnits(totalAssets)}</TableCell>
-              )}
-            </TableRow>
-          </TableBody>
+                {row.value && <TableCell align="right">{formatUnits(row.value)}</TableCell>}
+                </TableRow>
+            ))}
+            </TableBody>
         </Table>
-      </TableContainer>
-    </div>
+        </TableContainer>
+    </>
   );
 }
 

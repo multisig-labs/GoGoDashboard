@@ -27,5 +27,4 @@ export async function getAddrs() {
       console.log("error", e);
     }
   }
-  console.log("done")
 }

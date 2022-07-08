@@ -11,28 +11,30 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 
-
-
-
 async function logTime() {
-    // getting timestamp
-    const blockNumBefore = await ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL).getBlockNumber();
-    const blockBefore = await ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL).getBlock(blockNumBefore);
-    console.log(blockBefore.timestamp);
+  // getting timestamp
+  const blockNumBefore = await ethers
+    .getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
+    .getBlockNumber();
+  const blockBefore = await ethers
+    .getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
+    .getBlock(blockNumBefore);
+  console.log(blockBefore.timestamp);
 }
 
 function Skip() {
   const [dur, setDur] = useState("");
 
   function handleClick() {
-    console.log("Hey");
-    const p = new ethers.providers.JsonRpcProvider(process.env.REACT_APP_ETH_RPC_URL);
-    p.send("evm_increaseTime",[86400 * dur]);
-    p.send("evm_mine",[]);
-    }
+    const p = new ethers.providers.JsonRpcProvider(
+      process.env.REACT_APP_ETH_RPC_URL
+    );
+    p.send("evm_increaseTime", [86400 * dur]);
+    p.send("evm_mine", []);
+  }
   return (
     <div>
-              <Card
+      <Card
         className="card"
         sx={{ boxShadow: 10 }}
         style={{
@@ -52,18 +54,22 @@ function Skip() {
             Skip Time:
           </Typography>
           <FormGroup>
-        <TextField
-          id="outlined-basic"
-          label="Num Days"
-          variant="outlined"
-          value={dur}
-          onChange={(e) => setDur(e.target.value)}
-        />
-        <ButtonGroup style={{ padding: "0px" }} variant="outlined" fullWidth>
-          <Button onClick={() => handleClick()}>Skip</Button>
-          <Button onClick={() => logTime()}>Log Time </Button>
-        </ButtonGroup>
-      </FormGroup>
+            <TextField
+              id="outlined-basic"
+              label="Num Days"
+              variant="outlined"
+              value={dur}
+              onChange={(e) => setDur(e.target.value)}
+            />
+            <ButtonGroup
+              style={{ padding: "0px" }}
+              variant="outlined"
+              fullWidth
+            >
+              <Button onClick={() => handleClick()}>Skip</Button>
+              <Button onClick={() => logTime()}>Log Time </Button>
+            </ButtonGroup>
+          </FormGroup>
         </CardContent>
       </Card>
     </div>

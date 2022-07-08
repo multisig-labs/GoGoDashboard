@@ -12,7 +12,7 @@ import gogoballoon from "../../assets/gogopool-balloon.svg";
 import ggplogo from "../../assets/gogoDocs.svg";
 
 import { useBalances } from "./utils/utils";
-import Stake from "./Stake"
+import Stake from "./Stake";
 
 function LiquidStaker(props) {
   // Actor Balances

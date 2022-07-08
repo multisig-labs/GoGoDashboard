@@ -93,8 +93,14 @@ export const useBalances = (name) => {
     ggAVAX: actorggAVAX,
     GGP: actorGGP,
   };
-}
+};
 
-export function createData( name, avax, ggavax, ggp) {
+export function createData(name, avax, ggavax, ggp) {
   return { name, avax, ggavax, ggp };
 }
+
+// ANR fails lots of txs with gaslimit estimation errors, so override here
+export const overrides = {
+	gasLimit: 8000000,
+	gasPrice: 25000000000
+};

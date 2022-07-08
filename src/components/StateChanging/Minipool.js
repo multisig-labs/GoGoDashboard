@@ -7,8 +7,10 @@ import { ethers, utils } from "ethers";
 import contractAddresses from "../../data/contractAddresses.json";
 // ABI
 import MinipoolManagerABI from "../../abi/contract/MinipoolManager.sol/MinipoolManager.json";
-// Private Keys
+// Account Addresses
 import accounts from "../../data/anrAccounts.json";
+
+import { overrides } from "./utils/utils"
 
 import { nodeID } from "./utils/utils.js";
 
@@ -53,6 +55,8 @@ function Minipool(props) {
       utils.parseEther(ggpamt),
       {
         value: utils.parseEther(avaxamt.toString()),
+        gasLimit: 8000000,
+        gasPrice: 25000000000
       }
     );
   };
@@ -87,11 +91,25 @@ function Minipool(props) {
           value={dur}
           onChange={(e) => setDur(e.target.value)}
         />
-        <ButtonGroup style={{marginLeft: "10px", marginRight: "10px",justifyContent:"center"}} variant="outlined">
+        <ButtonGroup
+          style={{
+            marginLeft: "10px",
+            marginRight: "10px",
+            justifyContent: "center",
+          }}
+          variant="outlined"
+        >
           <Button onClick={() => makePool()}>Create Minipool</Button>
         </ButtonGroup>
 
-        <ButtonGroup style={{marginLeft: "10px", marginRight: "10px", justifyContent:"center"}} variant="outlined">
+        <ButtonGroup
+          style={{
+            marginLeft: "10px",
+            marginRight: "10px",
+            justifyContent: "center",
+          }}
+          variant="outlined"
+        >
           <Button onClick={() => withdrawPool()}>Withdraw Funds</Button>
         </ButtonGroup>
       </FormGroup>

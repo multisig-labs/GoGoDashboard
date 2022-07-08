@@ -37,19 +37,19 @@ function useGGAVAXStats(func) {
   return value?.[0];
 }
 
-function createData( stat, value ) {
+function createData(stat, value) {
   return { stat, value };
 }
 
 function unixTimeConversion(unixTimestamp) {
-  const milliseconds = unixTimestamp * 1000
-  const dateObject = new Date(milliseconds)
-  const humanDateFormat = dateObject.toLocaleString()
-  return(humanDateFormat)
+  const milliseconds = unixTimestamp * 1000;
+  const dateObject = new Date(milliseconds);
+  const humanDateFormat = dateObject.toLocaleString();
+  return humanDateFormat;
 }
 
 function TokenggAvax() {
-  const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength") /86400;
+  const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength") / 86400;
   const lastSync = useGGAVAXStats("lastSync");
   const rewardsCycleEnd = useGGAVAXStats("rewardsCycleEnd");
   const lastRewardAmount = useGGAVAXStats("lastRewardAmount");
@@ -61,75 +61,76 @@ function TokenggAvax() {
   const totalAssets = useGGAVAXStats("totalAssets");
 
   const rows1 = [
-    createData('Rewards Cycle Length', rewardsCycleLength + " days"),
-    createData('Last Sync', lastSync),
-    createData('Reward Cycle End', unixTimeConversion(rewardsCycleEnd))
+    createData("Rewards Cycle Length", rewardsCycleLength + " days"),
+    createData("Last Sync", lastSync),
+    createData("Reward Cycle End", unixTimeConversion(rewardsCycleEnd)),
   ];
 
   const rows2 = [
-    createData('Last Reward Amt', lastRewardAmount),
-    createData('Total Released Assets', totalReleasedAssets),
-    createData('Staking Total Assets', stakingTotalAssets),
-    createData('Target Float %', targetFloatPercent),
-    createData('Total Float', totalFloat),
-    createData('Amount Avail for Stake', amountAvailableForStaking),
-    createData('Total Assets', totalAssets)
+    createData("Last Reward Amt", lastRewardAmount),
+    createData("Total Released Assets", totalReleasedAssets),
+    createData("Staking Total Assets", stakingTotalAssets),
+    createData("Target Float %", targetFloatPercent),
+    createData("Total Float", totalFloat),
+    createData("Amount Avail for Stake", amountAvailableForStaking),
+    createData("Total Assets", totalAssets),
   ];
 
   return (
     <>
-        <TableContainer component={Paper}
+      <TableContainer
+        component={Paper}
         sx={{ boxShadow: 10 }}
-          style={{
-            alignContent: "center",
-            maxWidth: "50%",
-            margin: 'auto',
-            border: "solid"
-          }}
-        >
+        style={{
+          alignContent: "center",
+          maxWidth: "50%",
+          margin: "auto",
+          border: "solid",
+        }}
+      >
         <Table aria-label="simple table" size="small">
-            <TableHead>
+          <TableHead>
             <TableRow>
-                <TableCell>
-                  <Typography variant="h5" component="div">
-                    ggAVAX 
-                  </Typography>
-                </TableCell>
-                <TableCell align="right">
-                  <Typography variant="h5" component="div">
-                    Value
-                  </Typography>
-                </TableCell>
+              <TableCell>
+                <Typography variant="h5" component="div">
+                  ggAVAX
+                </Typography>
+              </TableCell>
+              <TableCell align="right">
+                <Typography variant="h5" component="div">
+                  Value
+                </Typography>
+              </TableCell>
             </TableRow>
-            </TableHead>
-            <TableBody>
+          </TableHead>
+          <TableBody>
             {rows1.map((row) => (
-                <TableRow
+              <TableRow
                 key={row.stat}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
                 <TableCell component="th" scope="row">
-                    {row.stat}
+                  {row.stat}
                 </TableCell>
-                <TableCell align="right">
-                  {row.value}
-                </TableCell>
-                </TableRow>
+                <TableCell align="right">{row.value}</TableCell>
+              </TableRow>
             ))}
             {rows2.map((row) => (
-                <TableRow
+              <TableRow
                 key={row.stat}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
                 <TableCell component="th" scope="row">
-                    {row.stat}
+                  {row.stat}
                 </TableCell>
-                {row.value && <TableCell align="right">{formatUnits(row.value)}</TableCell>}
-                </TableRow>
+                {row.value && (
+                  <TableCell align="right">{formatUnits(row.value)}</TableCell>
+                )}
+              </TableRow>
             ))}
-            </TableBody>
+          </TableBody>
         </Table>
-        </TableContainer>
+      </TableContainer>
     </>
   );
 }

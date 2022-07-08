@@ -17,7 +17,14 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ABI's
+/src/abi/*
+
+# Contract/Account Addresses
+/src/data/*

@@ -5,7 +5,14 @@ import accounts from "../../data/anrAccounts.json";
 function getStakers() {
   const stakers = [];
   for (var i in accounts) {
-    if (!(i.toUpperCase().includes("DEPLOYER") || i.toUpperCase().includes("REWARDER") || i.toUpperCase().includes("NODEOP") || i.toUpperCase().includes("RIALTO"))) {
+    if (
+      !(
+        i.toUpperCase().includes("DEPLOYER") ||
+        i.toUpperCase().includes("REWARDER") ||
+        i.toUpperCase().includes("NODEOP") ||
+        i.toUpperCase().includes("RIALTO")
+      )
+    ) {
       stakers.push(<LiquidStaker name={i} />);
     }
   }
@@ -15,7 +22,7 @@ function getStakers() {
 function LiquidStakers() {
   const stakers = getStakers();
 
-  return(<>{stakers}</>);
+  return <>{stakers}</>;
 }
 
 export default LiquidStakers;

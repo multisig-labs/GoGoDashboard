@@ -13,11 +13,10 @@ import RecordEnd from "./RecordEnd";
 import SyncRewards from "./SyncRewards";
 import SetGGPPrice from "./SetGGPPrice";
 
-
 // Contract Address
 import contractAddresses from "../../data/contractAddresses.json";
 // Actor Addresses
-import accounts from "../../data/accounts.json";
+import accounts from "../../data/anrAccounts.json";
 
 // AVAX logo
 import avaxlogo from "../../assets/avax-logo.png";
@@ -26,17 +25,16 @@ import gogoballoon from "../../assets/gogopool-balloon.svg";
 // GGP logo
 import ggplogo from "../../assets/gogoDocs.svg";
 
-
-function Rialto() {
-  // Actor 0 Balances
-  const actorAVAX_0 = useEtherBalance(accounts["RIALTO"]);
-  const actorggAVAX_0 = useTokenBalance(
+function Rialto(props) {
+  // Rialto Balances
+  const rialtoAVAX = useEtherBalance(accounts[props.name].addr);
+  const rialtoggAVAX = useTokenBalance(
     contractAddresses["TokenggAVAX"],
-    accounts["RIALTO"]
+    accounts[props.name].addr
   );
-  const actorGGP_0 = useTokenBalance(
+  const rialtoGGP = useTokenBalance(
     contractAddresses["TokenGGP"],
-    accounts["RIALTO"]
+    accounts[props.name].addr
   );
 
   return (
@@ -58,32 +56,32 @@ function Rialto() {
             variant="h5"
             component="div"
           >
-            Rialto:
+            {props.name}:
           </Typography>
-          {actorAVAX_0 && (
+          {rialtoAVAX && (
             <Typography variant="h6" component="div">
-              {Math.round(formatEther(actorAVAX_0))}{" "}
+              {Math.round(formatEther(rialtoAVAX))}{" "}
               <img width="20px" height="20px" src={avaxlogo} alt="AVAX" />
             </Typography>
           )}
-          {actorggAVAX_0 && (
+          {rialtoggAVAX && (
             <Typography style={{}} variant="h6" component="div">
-              {Math.round(formatEther(actorggAVAX_0))}{" "}
+              {Math.round(formatEther(rialtoggAVAX))}{" "}
               <img width="20px" height="20px" src={gogoballoon} alt="gg" />
               <img width="20px" height="20px" src={avaxlogo} alt="AVAX" />
             </Typography>
           )}
-          {actorGGP_0 && (
+          {rialtoGGP && (
             <Typography style={{}} variant="h6" component="div">
-              {Math.round(formatEther(actorGGP_0))}{" "}
+              {Math.round(formatEther(rialtoGGP))}{" "}
               <img width="20px" height="20px" src={ggplogo} alt="GGP" />
             </Typography>
           )}
-          <ClaimMinipool value="RIALTO" />
-          <RecordStart value="RIALTO" />
-          <RecordEnd value="RIALTO" />
-          <SyncRewards value="RIALTO" />
-          <SetGGPPrice/>
+          <ClaimMinipool name={props.name} />
+          <RecordStart name={props.name} />
+          <RecordEnd name={props.name} />
+          <SyncRewards name={props.name} />
+          <SetGGPPrice />
         </CardContent>
       </Card>
     </>

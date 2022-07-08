@@ -1,7 +1,7 @@
 import "../styles/Background.css";
 import "../styles/Test.css";
 import LiquidStakers from "../components/StateChanging/LiquidStakers.js";
-import Rialto from "../components/StateChanging/Rialto.js";
+import Multisigs from "../components/StateChanging/Multisigs.js";
 import Skip from "../components/StateChanging/Skip.js";
 
 import cloud from "../assets/cloud.svg";
@@ -26,8 +26,10 @@ function Test() {
               <NodeOperators />
             </div>
             <div className="c">
-              <Rialto />
               <Skip />
+            </div>
+            <div className="c">
+              <Multisigs />
             </div>
           </div>
         </div>

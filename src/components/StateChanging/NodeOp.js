@@ -8,7 +8,6 @@ import { useBalances } from "./utils/utils";
 
 import { formatEther } from "@ethersproject/units";
 
-
 // AVAX logo
 import avaxlogo from "../../assets/avax-logo.png";
 // ggAVAX logo
@@ -18,7 +17,7 @@ import ggplogo from "../../assets/gogoDocs.svg";
 
 function NodeOp(props) {
   // Actor Balances
-  const nodeOp = useBalances(props.name)
+  const nodeOp = useBalances(props.name);
 
   return (
     <>

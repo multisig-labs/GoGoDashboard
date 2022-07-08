@@ -24,7 +24,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # ABI's
-/src/abi/*
+/src/abi/contract
 
 # Contract/Account Addresses
-/src/data/*
+/src/data/*.json

@@ -14,7 +14,7 @@ import oracleABI from "../../abi/contract/Oracle.sol/Oracle.json";
 // GGP logo
 import ggplogo from "../../assets/gogoDocs.svg";
 
-function useOracleStats(func) {
+function useOracle(func) {
   const OracleInterface = new utils.Interface(oracleABI.abi);
   const { value, error } =
     useCall(
@@ -33,7 +33,7 @@ function useOracleStats(func) {
 
 function Oracle() {
   // Oracle.sol Stats
-  const GGPPrice = useOracleStats("getGGPPrice");
+  const GGPPrice = useOracle("getGGPPrice");
 
   return (
     <Card

@@ -16,6 +16,12 @@
     margin-right: 5%;
 }
 
+.Dashboard-title {
+    text-align: center;
+    font-size: 60px;
+    color:azure;
+    text-shadow: 0px 5px black;
+}
 .Rpc-url {
     text-align: center;
     color:azure;

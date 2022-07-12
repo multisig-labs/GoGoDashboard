@@ -11,7 +11,7 @@ import contractAddresses from "../../data/contractAddresses.json";
 // ABI
 import MinipoolManagerABI from "../../abi/contract/MinipoolManager.sol/MinipoolManager.json";
 
-function useMinipoolStats(func) {
+function useMinipoolManager(func,argArray) {
   const MinipoolManagerInterface = new utils.Interface(MinipoolManagerABI.abi);
   const { value, error } =
     useCall(
@@ -21,7 +21,7 @@ function useMinipoolStats(func) {
           MinipoolManagerInterface
         ), // instance of called contract
         method: func, // Method to be called
-        args: [], // Method arguments - address to be checked for balance
+        args: argArray, // Method arguments - address to be checked for balance
       }
     ) ?? {};
   if (error) {
@@ -33,8 +33,13 @@ function useMinipoolStats(func) {
 
 function MinipoolManager() {
   // MinipoolManager.sol Stats
-  const minipoolCount = useMinipoolStats("getMinipoolCount");
-
+  const minipoolCount = useMinipoolManager("getMinipoolCount",[])
+  const mps_0 = useMinipoolManager("getMinipools",[0,0,0])
+  const mps_1 = useMinipoolManager("getMinipools",[1,0,0])
+  const mps_2 = useMinipoolManager("getMinipools",[2,0,0])
+  const mps_3 = useMinipoolManager("getMinipools",[3,0,0])
+  const mps_4 = useMinipoolManager("getMinipools",[4,0,0])
+  const mps_5 = useMinipoolManager("getMinipools",[5,0,0])
   return (
     <Card
       sx={{ boxShadow: 10 }}

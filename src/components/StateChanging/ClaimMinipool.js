@@ -45,7 +45,7 @@ function ClaimMinipool(props) {
       <FormGroup>
         <ButtonGroup style={{ padding: "0px" }} variant="outlined" fullWidth>
           {nodeOps.map((n) => (
-            <Button onClick={() => claimPool(n)}>Claim {n}</Button>
+            <Button onClick={() => claimPool(n)}>Claim: {n}</Button>
           ))}
         </ButtonGroup>
         {status}

@@ -15,9 +15,9 @@ install:
 # Copies over abi and contract addresses
 setup:
 	# ETH RPC URL Setup
-	export ETH_RPC_URL=`curl --silent -X POST -k http://localhost:8081/v1/control/uris -d '' | jq -j '.uris | .[0]'`
+	export ETH_RPC_URL=`curl --silent -X POST -k http://localhost:8081/v1/control/uris -d '' | jq -r '.uris[0]'`
 	# Replace ABI
-	rm -rf ./src/abi/*
+	rm -rf ./src/abi/contract
 	cp -R ../gogopool-contracts/artifacts/contracts/contract ./src/abi/
 	# Replace Contract Addresses
 	rm ./src/data/contractAddresses.json

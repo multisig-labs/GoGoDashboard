@@ -46,8 +46,6 @@ function RecordEnd(props) {
     if (avax !== 0) {
       void send(nodeID(node), duration, ethers.utils.parseEther("300"), {
         value: avax,
-        gasPrice: 18000000,
-        gasLimit: 3000000,
       });
     }
   };
@@ -63,7 +61,7 @@ function RecordEnd(props) {
       />
       <ButtonGroup style={{ padding: "0px" }} variant="outlined" fullWidth>
         {nodeOps.map((n) => (
-          <Button onClick={() => recordEnd(n)}>Claim {n}</Button>
+          <Button onClick={() => recordEnd(n)}>Record End: {n}</Button>
         ))}
       </ButtonGroup>
       {status}

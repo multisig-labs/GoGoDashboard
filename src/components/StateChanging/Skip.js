@@ -29,7 +29,7 @@ function Skip() {
     const p = new ethers.providers.JsonRpcProvider(
       process.env.REACT_APP_ETH_RPC_URL
     );
-    p.send("evm_increaseTime", [86400 * dur]);
+    p.send("avm.advanceTime", [86400 * dur]);
     p.send("evm_mine", []);
   }
   return (

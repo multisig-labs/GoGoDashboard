@@ -11,7 +11,7 @@ function getStakers() {
         i.toUpperCase().includes("REWARDER") ||
         i.toUpperCase().includes("NODEOP") ||
         i.toUpperCase().includes("RIALTO")
-      )
+      ) && (accounts[i].addr).substring(0,2) === "0x"
     ) {
       stakers.push(<LiquidStaker name={i} />);
     }

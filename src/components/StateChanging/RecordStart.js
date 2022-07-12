@@ -38,14 +38,14 @@ function RecordStart(props) {
   const nodeOps = listNodes(accounts);
 
   const recordStart = (node) => {
-    void send(nodeID(node), now(), {});
+    void send(nodeID(node), ethers.utils.formatBytes32String(""), now(), {});
   };
 
   return (
     <FormGroup>
       <ButtonGroup style={{ padding: "0px" }} variant="outlined" fullWidth>
         {nodeOps.map((n) => (
-          <Button onClick={() => recordStart(n)}>Claim {n}</Button>
+          <Button onClick={() => recordStart(n)}>Record Start: {n}</Button>
         ))}
       </ButtonGroup>
       {status}

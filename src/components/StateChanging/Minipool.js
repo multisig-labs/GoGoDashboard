@@ -50,7 +50,7 @@ function Minipool(props) {
   const makePool = () => {
     void create(
       node,
-      parseInt(dur * 86400),
+      parseInt(dur),
       delegationFee,
       utils.parseEther(ggpamt),
       {
@@ -85,7 +85,7 @@ function Minipool(props) {
         />
         <TextField
           id="outlined-basic"
-          label="Duration (Days)"
+          label="Duration (Sec)"
           variant="outlined"
           style={{ marginLeft: "10px", marginRight: "10px" }}
           value={dur}

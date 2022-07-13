@@ -15,20 +15,22 @@ function Dashboard() {
   return (
     <div className="header-bg">
       <div className="App-header"></div>
-      <div className="Dashboard-title"><b>DASHBOARD</b></div>
-      <div className="Rpc-url"><b>RPC-URL:</b> {process.env.REACT_APP_ETH_RPC_URL}</div>
+      <div className="Rpc-url">
+        <b>RPC-URL:</b> {process.env.REACT_APP_ETH_RPC_URL}
+      </div>
       <div className="App-body">
         <img src={cloud} className="cloud" width="300px"></img>
         <img src={mountains} className="mountains"></img>
         <img src={balloonyellow} className="balloon-yellow"></img>
         <div className="Body-content">
           <div className="sections">
-            <MinipoolLog/>
+          <MinipoolLog />
+          </div>
+          <div className="sections">
             <TokenggAvax />
             <div className="cards">
               <VaultBalances className="card-1" />
               <Oracle className="card-2" />
-              <MinipoolManager className="card-3" />
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ function SetGGPPrice() {
   });
   const { status } = state;
 
-  const setGGP = () => {
+  const setGGP = (price) => {
     void send(ethers.utils.parseEther(price), 9999);
   };
 
@@ -42,7 +42,7 @@ function SetGGPPrice() {
           onChange={(e) => setPrice(e.target.value)}
         />
         <ButtonGroup style={{ padding: "0px" }} variant="outlined" fullWidth>
-          <Button onClick={() => setGGP()}>Set Price</Button>
+          <Button onClick={() => setGGP(price)}>Set Price</Button>
         </ButtonGroup>
         {status}
       </FormGroup>

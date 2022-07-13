@@ -26,10 +26,10 @@ function Test() {
               <NodeOperators />
             </div>
             <div className="c">
-              <Skip />
+              <Multisigs />
             </div>
             <div className="c">
-              <Multisigs />
+              <Skip />
             </div>
           </div>
         </div>

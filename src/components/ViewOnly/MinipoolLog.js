@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { formatEther, formatUnits } from "@ethersproject/units";
 import { useCall } from "@usedapp/core";
 import { Contract } from "@ethersproject/contracts";
@@ -11,14 +12,15 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Typography } from "@material-ui/core";
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
 
-// Contract Address
 import contractAddresses from "../../data/contractAddresses.json";
-// ABI
 import MinipoolManagerABI from "../../abi/contract/MinipoolManager.sol/MinipoolManager.json";
-// Accounts
-import accounts from "../../data/anrAccounts.json";
+import { formatAddr, checkNull, unixTimeConversion } from "./utils/formatHelpers";
 
+// Custom hook for MinipoolManager Contract
 function useMinipoolManager(func, argArray) {
   const MinipoolManagerInterface = new utils.Interface(MinipoolManagerABI.abi);
   const { value, error } =
@@ -39,31 +41,7 @@ function useMinipoolManager(func, argArray) {
   return value?.[0];
 }
 
-function unixTimeConversion(unixTimestamp) {
-  if (unixTimestamp === "0") {
-    return "-";
-  }
-  const milliseconds = unixTimestamp * 1000;
-  const dateObject = new Date(milliseconds);
-  const humanDateFormat = dateObject.toLocaleString();
-  return humanDateFormat;
-}
-function checkNull(item) {
-  if (item !== undefined) {
-    return item;
-  } else {
-    return 0;
-  }
-}
-function formatAddr(addr) {
-	for (var n in accounts) {
-		if (addr === accounts[n].addr) {
-			return(n);
-		}
-	}
-    return(addr.substring(0, 6) + ".." + addr.substring(addr.length - 4));
-}
-
+// Formatting for different data types
 function format(item, name) {
   if (
     name.includes("multisigAddr") ||
@@ -71,38 +49,20 @@ function format(item, name) {
     name.includes("owner")
   ) {
     return formatAddr(checkNull(item));
-  } else if(name.includes("txID")){
+  } else if (name.includes("txID")) {
     return checkNull(item);
-  } else if(name.includes("Amt") || name.includes("Fee")) {
+  } else if (name.includes("Amt") || name.includes("Fee")) {
     return formatUnits(checkNull(item));
-  } else if(name.includes("startTime") || name.includes("endTime")){
-    return unixTimeConversion(formatUnits(checkNull(item),"wei"));
+  } else if (name.includes("startTime") || name.includes("endTime")) {
+    return unixTimeConversion(formatUnits(checkNull(item), "wei"));
   } else {
-      return formatUnits(checkNull(item),"wei");
+    return formatUnits(checkNull(item), "wei");
   }
 }
-// 		"nodeID",
-// 		"status",
-// 		"owner",
-// 		"multisig",
-// 		"avaxNopAmt",
-// 		"ggpBondAmt",
-// 		"avaxUsrAmt",
-// 		"delFee",
-// 		"dur",
-// 		"start",
-// 		"end",
-// 		"totRwds",
-// 		"nopRwds",
-// 		"usrRwds",
-// 		"ggpSlashAmt"
 
-function MinipoolLog() {
-  const mpData = [
-    "nodeID",
-    "status",
-    "owner",
-    "multisigAddr",
+function MinipoolRow(props) {
+  const [open, setOpen] = useState(false);
+  const mpDataUncollapsed = [
     "avaxNodeOpAmt",
     "ggpBondAmt",
     "avaxUsrAmt",
@@ -114,13 +74,15 @@ function MinipoolLog() {
     "avaxNodeOpRewardAmt",
     "avaxUserRewardAmt",
     "ggpSlashAmt",
-    "txID",
   ];
-  const mpDataTitles = [
+  const mpDataCollapsed = [
     "nodeID",
     "status",
     "owner",
-    "multisig",
+    "multisigAddr",
+    "txID",
+  ];
+  const mpDataTitles = [
     "avaxNopAmt",
     "ggpBondAmt",
     "avaxUsrAmt",
@@ -132,8 +94,72 @@ function MinipoolLog() {
     "nopRwds",
     "usrRwds",
     "ggpSlashAmt",
+  ];
+  return (
+    <>
+      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+        <TableCell>
+          <IconButton
+            aria-label="expand row"
+            size="small"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? "🔽" : "🔼"}
+          </IconButton>
+        </TableCell>
+        {mpDataCollapsed.filter(checkNull).map((item) => (
+          <TableCell>
+            <Typography variant="h7" component="div">
+              {format(props.minipool[item], item)}
+            </Typography>
+          </TableCell>
+        ))}
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Paper variant="outlined" elevation={0} sx={{ margin: 1 }}>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {mpDataTitles.map((item) => (
+                        <TableCell>
+                          <Typography variant="h7" component="div">
+                            {item}
+                          </Typography>
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      {mpDataUncollapsed.filter(checkNull).map((item) => (
+                        <TableCell>
+                          <Typography variant="h7" component="div">
+                            {format(props.minipool[item], item)}
+                          </Typography>
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableBody>
+                </Table>
+            </Paper>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+    </>
+  );
+}
+
+function MinipoolLog() {
+  const mpDataTitles = [
+    "nodeID",
+    "status",
+    "owner",
+    "multisig",
     "txID",
   ];
+
   const mps_0 = useMinipoolManager("getMinipools", [0, 0, 0]);
   const mps_1 = useMinipoolManager("getMinipools", [1, 0, 0]);
   const mps_2 = useMinipoolManager("getMinipools", [2, 0, 0]);
@@ -141,7 +167,7 @@ function MinipoolLog() {
   const mps_4 = useMinipoolManager("getMinipools", [4, 0, 0]);
   const mps_5 = useMinipoolManager("getMinipools", [5, 0, 0]);
   const mps = [mps_0, mps_1, mps_2, mps_3, mps_4, mps_5];
-  console.log(mps);
+
   return (
     <>
       <TableContainer
@@ -149,7 +175,7 @@ function MinipoolLog() {
         sx={{ boxShadow: 10 }}
         style={{
           alignContent: "center",
-          maxWidth: "100%",
+          maxWidth: "85%",
           margin: "auto",
           border: "solid",
         }}
@@ -157,6 +183,7 @@ function MinipoolLog() {
         <Table aria-label="simple table" size="small">
           <TableHead>
             <TableRow>
+              <TableCell />
               {mpDataTitles.map((item) => (
                 <TableCell>
                   <Typography variant="h7" component="div">
@@ -170,15 +197,7 @@ function MinipoolLog() {
             {mps.filter(checkNull).map((mpgroup) => (
               <>
                 {mpgroup.filter(checkNull).map((mp) => (
-                  <TableRow>
-                    {mpData.filter(checkNull).map((item) => (
-                      <TableCell>
-                        <Typography variant="h7" component="div">
-                          {format(mp[item], item)}
-                        </Typography>
-                      </TableCell>
-                    ))}
-                  </TableRow>
+                  <MinipoolRow minipool={mp} />
                 ))}
               </>
             ))}

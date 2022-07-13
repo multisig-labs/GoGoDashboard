@@ -3,8 +3,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
 }
 
 .cards {
@@ -12,8 +13,14 @@
     flex-direction: column;
     text-align: center;
     justify-content: space-around;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 20px;
+    padding: 20px;
+
+}
+
+.Body-content {
+    padding: 20px;
+    margin: 20px;
 }
 
 .Dashboard-title {

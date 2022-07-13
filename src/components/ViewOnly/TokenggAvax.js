@@ -17,6 +17,8 @@ import contractAddresses from "../../data/contractAddresses.json";
 // ABI
 import TokenggAvaxABI from "../../abi/contract/tokens/TokenggAVAX.sol/TokenggAVAX.json";
 
+import { unixTimeConversion } from "./utils/formatHelpers";
+
 function useGGAVAXStats(func) {
   const TokenggAvaxInterface = new utils.Interface(TokenggAvaxABI.abi);
   const { value, error } =
@@ -41,13 +43,6 @@ function createData(stat, value) {
   return { stat, value };
 }
 
-function unixTimeConversion(unixTimestamp) {
-  const milliseconds = unixTimestamp * 1000;
-  const dateObject = new Date(milliseconds);
-  const humanDateFormat = dateObject.toLocaleString();
-  return humanDateFormat;
-}
-
 function TokenggAvax() {
   const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength") / 86400;
   const lastSync = useGGAVAXStats("lastSync");
@@ -62,7 +57,7 @@ function TokenggAvax() {
 
   const rows1 = [
     createData("Rewards Cycle Length", rewardsCycleLength + " days"),
-    createData("Last Sync", lastSync),
+    createData("Last Sync", unixTimeConversion(lastSync)),
     createData("Reward Cycle End", unixTimeConversion(rewardsCycleEnd)),
   ];
 
@@ -83,7 +78,7 @@ function TokenggAvax() {
         sx={{ boxShadow: 10 }}
         style={{
           alignContent: "center",
-          maxWidth: "50%",
+          maxWidth: "40%",
           margin: "auto",
           border: "solid",
         }}

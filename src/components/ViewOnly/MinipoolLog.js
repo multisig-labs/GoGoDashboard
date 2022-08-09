@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useGetUniqueKey } from "react-generate-unique-key-for-map";
 import { formatEther, formatUnits } from "@ethersproject/units";
 import { useCall } from "@usedapp/core";
 import { Contract } from "@ethersproject/contracts";
@@ -108,7 +109,7 @@ function MinipoolRow(props) {
           </IconButton>
         </TableCell>
         {mpDataCollapsed.filter(checkNull).map((item) => (
-          <TableCell>
+          <TableCell key={item}>
             <Typography variant="h7" component="div">
               {format(props.minipool[item], item)}
             </Typography>
@@ -123,7 +124,7 @@ function MinipoolRow(props) {
                   <TableHead>
                     <TableRow>
                       {mpDataTitles.map((item) => (
-                        <TableCell>
+                        <TableCell key={item}>
                           <Typography variant="h7" component="div">
                             {item}
                           </Typography>
@@ -134,7 +135,7 @@ function MinipoolRow(props) {
                   <TableBody>
                     <TableRow>
                       {mpDataUncollapsed.filter(checkNull).map((item) => (
-                        <TableCell>
+                        <TableCell key={item}>
                           <Typography variant="h7" component="div">
                             {format(props.minipool[item], item)}
                           </Typography>
@@ -152,6 +153,8 @@ function MinipoolRow(props) {
 }
 
 function MinipoolLog() {
+  const getUniqueKey = useGetUniqueKey();
+
   const mpDataTitles = [
     "nodeID",
     "status",
@@ -185,7 +188,7 @@ function MinipoolLog() {
             <TableRow>
               <TableCell />
               {mpDataTitles.map((item) => (
-                <TableCell>
+                <TableCell key={item}>
                   <Typography variant="h7" component="div">
                     {item}
                   </Typography>
@@ -195,11 +198,11 @@ function MinipoolLog() {
           </TableHead>
           <TableBody>
             {mps.filter(checkNull).map((mpgroup) => (
-              <>
+              <React.Fragment key={getUniqueKey(mpgroup)}>
                 {mpgroup.filter(checkNull).map((mp) => (
-                  <MinipoolRow minipool={mp} />
+                  <MinipoolRow key={mp} minipool={mp} />
                 ))}
-              </>
+              </React.Fragment>
             ))}
           </TableBody>
         </Table>

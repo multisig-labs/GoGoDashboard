@@ -34,12 +34,7 @@ function useMinipoolManager(func,argArray) {
 function MinipoolManager() {
   // MinipoolManager.sol Stats
   const minipoolCount = useMinipoolManager("getMinipoolCount",[])
-  const mps_0 = useMinipoolManager("getMinipools",[0,0,0])
-  const mps_1 = useMinipoolManager("getMinipools",[1,0,0])
-  const mps_2 = useMinipoolManager("getMinipools",[2,0,0])
-  const mps_3 = useMinipoolManager("getMinipools",[3,0,0])
-  const mps_4 = useMinipoolManager("getMinipools",[4,0,0])
-  const mps_5 = useMinipoolManager("getMinipools",[5,0,0])
+
   return (
     <Card
       sx={{ boxShadow: 10 }}

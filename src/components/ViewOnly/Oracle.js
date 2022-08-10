@@ -47,7 +47,7 @@ function Oracle() {
     >
       <CardContent>
         <Typography variant="h5" component="div">
-          GGP <img width="20px" height="20px" src={ggplogo} /> Price:
+          GGP <img width="20px" height="20px" src={ggplogo} alt=""/> Price:
         </Typography>
         {GGPPrice && (
           <Typography variant="h6" component="div">

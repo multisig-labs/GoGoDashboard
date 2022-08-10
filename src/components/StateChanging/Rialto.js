@@ -2,10 +2,8 @@ import { useEtherBalance, useTokenBalance } from "@usedapp/core";
 import { formatEther } from "@ethersproject/units";
 
 import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import CardActions from "@mui/material/CardActions";
 
 import ClaimMinipool from "./ClaimMinipool";
 import RecordStart from "./RecordStart";

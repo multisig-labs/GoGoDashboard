@@ -8,8 +8,6 @@ import contractAddresses from "../../data/contractAddresses.json";
 import TokenggAVAXABI from "../../abi/contract/tokens/TokenggAVAX.sol/TokenggAVAX.json";
 // Accounts
 import accounts from "../../data/anrAccounts.json";
-// Utils
-import { calcDuration, calcReward } from "./utils/utils.js";
 
 import { Button } from "@mui/material";
 import ButtonGroup from "@mui/material/ButtonGroup";

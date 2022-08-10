@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useContractFunction } from "@usedapp/core";
 import { Contract } from "@ethersproject/contracts";
 import { ethers, utils } from "ethers";
-import { formatEther } from "@ethersproject/units";
 
 // Contract Address
 import contractAddresses from "../../data/contractAddresses.json";
@@ -27,15 +26,12 @@ function Stake(props) {
     ethers.getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
   );
 
-  const { state: stakeState, send: stake } = useContractFunction(
-    ggAvaxContract,
-    "depositAVAX",
-    { signer: w }
-  );
-  const {
-    state: unstakeState,
-    send: unstake,
-  } = useContractFunction(ggAvaxContract, "redeemAVAX", { signer: w });
+  const { send: stake } = useContractFunction(ggAvaxContract, "depositAVAX", {
+    signer: w,
+  });
+  const { send: unstake } = useContractFunction(ggAvaxContract, "redeemAVAX", {
+    signer: w,
+  });
 
   const stakeAVAX = () => {
     void stake({ value: ethers.utils.parseEther(amt, "ether") });

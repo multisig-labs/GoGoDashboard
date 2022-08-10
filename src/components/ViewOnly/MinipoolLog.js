@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useGetUniqueKey } from "react-generate-unique-key-for-map";
-import { formatEther, formatUnits } from "@ethersproject/units";
+import { formatUnits } from "@ethersproject/units";
 import { useCall } from "@usedapp/core";
 import { Contract } from "@ethersproject/contracts";
 import { utils } from "ethers";
@@ -13,7 +13,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Typography } from "@material-ui/core";
-import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 

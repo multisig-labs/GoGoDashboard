@@ -10,8 +10,6 @@ import MinipoolManagerABI from "../../abi/contract/MinipoolManager.sol/MinipoolM
 // Account Addresses
 import accounts from "../../data/anrAccounts.json";
 
-import { overrides } from "./utils/utils"
-
 import { nodeID } from "./utils/utils.js";
 
 import { Button } from "@mui/material";
@@ -35,17 +33,16 @@ function Minipool(props) {
     minipoolInterface
   );
 
-  const { state: state1, send: create } = useContractFunction(
+  const { send: create } = useContractFunction(
     minipoolContract,
     "createMinipool",
     { signer: w }
   );
-  const { state: state2, send: destroy } = useContractFunction(
+  const { send: destroy } = useContractFunction(
     minipoolContract,
     "withdrawMinipoolFunds",
     { signer: w }
   );
-  const { status } = state1;
 
   const makePool = () => {
     void create(

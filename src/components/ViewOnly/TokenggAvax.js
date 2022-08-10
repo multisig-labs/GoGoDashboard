@@ -1,4 +1,4 @@
-import { formatEther, formatUnits } from "@ethersproject/units";
+import { formatUnits } from "@ethersproject/units";
 import { useCall } from "@usedapp/core";
 import { Contract } from "@ethersproject/contracts";
 import { utils } from "ethers";

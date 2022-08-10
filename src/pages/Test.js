@@ -14,9 +14,9 @@ function Test() {
     <div className="header-bg">
       <div className="App-header"></div>
       <div className="App-body">
-        <img src={cloud} className="cloud" width="300px"></img>
-        <img src={mountains} className="mountains"></img>
-        <img src={balloonyellow} className="balloon-yellow"></img>
+        <img src={cloud} className="cloud" width="300px" alt=""></img>
+        <img src={mountains} className="mountains" alt=""></img>
+        <img src={balloonyellow} className="balloon-yellow" alt=""></img>
         <div className="Body-content">
           <div className="s">
             <div className="c">

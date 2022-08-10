@@ -37,13 +37,13 @@ function VaultBalances() {
         {vaultAVAX && (
           <Typography variant="h6" component="div">
             {formatEther(vaultAVAX)}{" "}
-            <img width="20px" height="20px" src={avaxlogo} />
+            <img width="20px" height="20px" src={avaxlogo} alt=""/>
           </Typography>
         )}
         {vaultGGP && (
           <Typography variant="h6" component="div">
             {formatEther(vaultGGP)}{" "}
-            <img width="20px" height="20px" src={ggplogo} />
+            <img width="20px" height="20px" src={ggplogo} alt="" />
           </Typography>
         )}
       </CardContent>

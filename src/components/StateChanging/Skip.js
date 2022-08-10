@@ -6,10 +6,8 @@ import FormGroup from "@mui/material/FormGroup";
 import { ethers } from "ethers";
 
 import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import CardActions from "@mui/material/CardActions";
 
 async function logTime() {
   // getting timestamp

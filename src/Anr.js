@@ -1,4 +1,3 @@
-import { Chain } from '@usedapp/core'
 import contractAddresses from "./data/contractAddresses.json"
 
 export const AnrChain= {

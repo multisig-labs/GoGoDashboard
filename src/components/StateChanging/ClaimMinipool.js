@@ -15,7 +15,6 @@ import { nodeID } from "./utils/utils.js";
 import { Button } from "@mui/material";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import FormGroup from "@mui/material/FormGroup";
-import { Typography } from "@material-ui/core";
 
 function ClaimMinipool(props) {
   let w = new ethers.Wallet(
@@ -41,16 +40,6 @@ function ClaimMinipool(props) {
     void send(nodeID(node), {});
   };
 
-  const checkStatus = (status) => {
-    if(status === "Success") {
-      return("✅")
-    } else if(status === "Fail" || status === "Exception") {
-      return("❌")
-    }
-    else {
-      return("⚪️");
-    }
-  }
   return (
     <div>
       <FormGroup>

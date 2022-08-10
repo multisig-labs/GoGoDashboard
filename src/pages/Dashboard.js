@@ -1,7 +1,6 @@
 import VaultBalances from "../components/ViewOnly/VaultBalances";
 import Oracle from "../components/ViewOnly/Oracle";
 import TokenggAvax from "../components/ViewOnly/TokenggAvax";
-import MinipoolManager from "../components/ViewOnly/MinipoolManager";
 import MinipoolLog from "../components/ViewOnly/MinipoolLog";
 
 import cloud from "../assets/cloud.svg";
@@ -19,9 +18,9 @@ function Dashboard() {
         <b>RPC-URL:</b> {process.env.REACT_APP_ETH_RPC_URL}
       </div>
       <div className="App-body">
-        <img src={cloud} className="cloud" width="300px"></img>
-        <img src={mountains} className="mountains"></img>
-        <img src={balloonyellow} className="balloon-yellow"></img>
+        <img src={cloud} className="cloud" width="300px" alt=""></img>
+        <img src={mountains} className="mountains" alt=""></img>
+        <img src={balloonyellow} className="balloon-yellow" alt=""></img>
         <div className="Body-content">
           <div className="sections">
           <MinipoolLog />

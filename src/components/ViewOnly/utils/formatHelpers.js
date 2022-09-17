@@ -1,7 +1,7 @@
 import accounts from "../../../data/anrAccounts.json"
 // Formatting tools
 export function unixTimeConversion(unixTimestamp) {
-  if (unixTimestamp === "0") {
+  if (unixTimestamp === 0 || unixTimestamp === "0") {
     return "-";
   }
   const milliseconds = unixTimestamp * 1000;

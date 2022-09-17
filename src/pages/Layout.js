@@ -17,18 +17,19 @@ const Layout = () => {
             color: "black"
         }}
         >Dashboard</Button></Link>
-        <Link to="/test"
+        {/* <Link to="/test" 
             style={{ 
                 textDecoration: 'none',
                 color: "inherit"
             }}
-        ><Button variant="contained" color="error"
+        >
+          <Button variant="contained" color="error"
         style={{
             margin: "1%",
             border: "solid",
-            color: "black"
+            color: "black",
         }}
-        >Test</Button></Link>
+        >Test</Button></Link> */}
       </nav>
 
       <Outlet />

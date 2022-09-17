@@ -44,7 +44,7 @@ function createData(stat, value) {
 }
 
 function TokenggAvax() {
-  const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength") / 86400;
+  const rewardsCycleLength = useGGAVAXStats("rewardsCycleLength");
   const lastSync = useGGAVAXStats("lastSync");
   const rewardsCycleEnd = useGGAVAXStats("rewardsCycleEnd");
   const lastRewardAmount = useGGAVAXStats("lastRewardAmount");

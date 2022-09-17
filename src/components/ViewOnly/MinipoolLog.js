@@ -64,18 +64,19 @@ function MinipoolRow(props) {
   const [open, setOpen] = useState(false);
   const mpDataUncollapsed = [
     "avaxNodeOpAmt",
-    "ggpBondAmt",
-    "avaxUsrAmt",
+    "avaxLiquidStakerAmt",
+    "avaxNodeOpRewardAmt",
+    "avaxLiquidStakerRewardAmt",
+    "avaxTotalRewardAmt",
     "delegationFee",
     "duration",
     "startTime",
     "endTime",
-    "avaxTotalRewardAmt",
-    "avaxNodeOpRewardAmt",
-    "avaxUserRewardAmt",
     "ggpSlashAmt",
+    "errorCode",
   ];
   const mpDataCollapsed = [
+    "index",
     "nodeID",
     "status",
     "owner",
@@ -83,17 +84,17 @@ function MinipoolRow(props) {
     "txID",
   ];
   const mpDataTitles = [
-    "avaxNopAmt",
-    "ggpBondAmt",
-    "avaxUsrAmt",
-    "delFee",
-    "dur",
-    "start",
-    "end",
-    "totRwds",
-    "nopRwds",
-    "usrRwds",
-    "ggpSlashAmt",
+    "NodeOp AVAX",
+    "NodeOp GGP",
+    "User AVAX",
+    "Del Fee",
+    "Dur",
+    "Start",
+    "End",
+    "Total Rwds",
+    "NodeOp Rwds",
+    "User Rwds",
+    "GGP Slash Amt",
   ];
   return (
     <>
@@ -104,7 +105,7 @@ function MinipoolRow(props) {
             size="small"
             onClick={() => setOpen(!open)}
           >
-            {open ? "🔽" : "🔼"}
+            {open ? "▾" : "▸"}
           </IconButton>
         </TableCell>
         {mpDataCollapsed.filter(checkNull).map((item) => (
@@ -155,20 +156,20 @@ function MinipoolLog() {
   const getUniqueKey = useGetUniqueKey();
 
   const mpDataTitles = [
+    "index",
     "nodeID",
     "status",
     "owner",
     "multisig",
     "txID",
   ];
-
-  const mps_0 = useMinipoolManager("getMinipools", [0, 0, 0]);
   const mps_1 = useMinipoolManager("getMinipools", [1, 0, 0]);
   const mps_2 = useMinipoolManager("getMinipools", [2, 0, 0]);
   const mps_3 = useMinipoolManager("getMinipools", [3, 0, 0]);
   const mps_4 = useMinipoolManager("getMinipools", [4, 0, 0]);
   const mps_5 = useMinipoolManager("getMinipools", [5, 0, 0]);
-  const mps = [mps_0, mps_1, mps_2, mps_3, mps_4, mps_5];
+  const mps_6 = useMinipoolManager("getMinipools", [6, 0, 0]);
+  const mps = [ mps_1, mps_2, mps_3, mps_4, mps_5, mps_6];
 
   return (
     <>

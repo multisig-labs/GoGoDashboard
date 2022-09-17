@@ -36,13 +36,13 @@ function VaultBalances() {
         </Typography>
         {vaultAVAX && (
           <Typography variant="h6" component="div">
-            {formatEther(vaultAVAX)}{" "}
+            {Math.round(formatEther(vaultAVAX))}{" "}
             <img width="20px" height="20px" src={avaxlogo} alt=""/>
           </Typography>
         )}
         {vaultGGP && (
           <Typography variant="h6" component="div">
-            {formatEther(vaultGGP)}{" "}
+            {Math.round(formatEther(vaultGGP))}{" "}
             <img width="20px" height="20px" src={ggplogo} alt="" />
           </Typography>
         )}

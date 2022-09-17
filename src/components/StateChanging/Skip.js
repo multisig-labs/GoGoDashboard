@@ -17,7 +17,6 @@ async function logTime() {
   const blockBefore = await ethers
     .getDefaultProvider(process.env.REACT_APP_ETH_RPC_URL)
     .getBlock(blockNumBefore);
-  console.log(blockBefore.timestamp);
 }
 
 function Skip() {
